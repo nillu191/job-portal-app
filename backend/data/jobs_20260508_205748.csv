@@ -1,0 +1,51 @@
+id,title,company,category,job_type,publication_date,salary,location,url,source
+mock_0,Senior Software Engineer,Classroom Tech,Technology,Full-time,2026-05-08,5L - 12L INR,"Kolkata, WB",https://www.linkedin.com/jobs,LinkedIn
+mock_1,Senior Frontend Developer,TCS,Technology,Full-time,2026-05-08,6L - 13L INR,"Bangalore, KA",https://www.linkedin.com/jobs,LinkedIn
+mock_2,Senior Backend Developer,Infosys,Technology,Full-time,2026-05-08,7L - 14L INR,"Mumbai, MH",https://www.linkedin.com/jobs,LinkedIn
+mock_3,Senior Full Stack Developer,Wipro,Technology,Full-time,2026-05-08,8L - 15L INR,"Delhi, NCR",https://www.linkedin.com/jobs,LinkedIn
+mock_4,Senior Data Scientist,HCLTech,Technology,Full-time,2026-05-08,9L - 16L INR,"Hyderabad, TS",https://www.linkedin.com/jobs,LinkedIn
+mock_5,Senior UI/UX Designer,Zomato,Technology,Full-time,2026-05-08,10L - 17L INR,"Pune, MH",https://www.linkedin.com/jobs,LinkedIn
+mock_6,Senior DevOps Engineer,Swiggy,Technology,Full-time,2026-05-08,11L - 18L INR,"Chennai, TN",https://www.linkedin.com/jobs,LinkedIn
+mock_7,Senior Product Manager,Paytm,Technology,Full-time,2026-05-08,12L - 19L INR,"Gurgaon, HR",https://www.linkedin.com/jobs,LinkedIn
+mock_8,Senior QA Analyst,PhonePe,Technology,Full-time,2026-05-08,13L - 20L INR,"Noida, UP",https://www.linkedin.com/jobs,LinkedIn
+mock_9,Senior Mobile Developer,Flipkart,Technology,Full-time,2026-05-08,14L - 21L INR,"Ahmedabad, GJ",https://www.linkedin.com/jobs,LinkedIn
+mock_10,Senior Software Engineer,Classroom Tech,Technology,Full-time,2026-05-08,15L - 22L INR,"Jaipur, RJ",https://www.linkedin.com/jobs,LinkedIn
+mock_11,Senior Frontend Developer,TCS,Technology,Full-time,2026-05-08,16L - 23L INR,"Chandigarh, PB",https://www.linkedin.com/jobs,LinkedIn
+mock_12,Senior Backend Developer,Infosys,Technology,Full-time,2026-05-08,17L - 24L INR,"Lucknow, UP",https://www.linkedin.com/jobs,LinkedIn
+mock_13,Senior Full Stack Developer,Wipro,Technology,Full-time,2026-05-08,18L - 25L INR,"Kochi, KL",https://www.linkedin.com/jobs,LinkedIn
+mock_14,Senior Data Scientist,HCLTech,Technology,Full-time,2026-05-08,19L - 26L INR,"Indore, MP",https://www.linkedin.com/jobs,LinkedIn
+mock_15,Senior UI/UX Designer,Zomato,Technology,Full-time,2026-05-08,20L - 27L INR,"Kolkata, WB",https://www.linkedin.com/jobs,LinkedIn
+mock_16,Senior DevOps Engineer,Swiggy,Technology,Full-time,2026-05-08,21L - 28L INR,"Bangalore, KA",https://www.linkedin.com/jobs,LinkedIn
+mock_17,Senior Product Manager,Paytm,Technology,Full-time,2026-05-08,22L - 29L INR,"Mumbai, MH",https://www.linkedin.com/jobs,LinkedIn
+mock_18,Senior QA Analyst,PhonePe,Technology,Full-time,2026-05-08,23L - 30L INR,"Delhi, NCR",https://www.linkedin.com/jobs,LinkedIn
+mock_19,Senior Mobile Developer,Flipkart,Technology,Full-time,2026-05-08,24L - 31L INR,"Hyderabad, TS",https://www.linkedin.com/jobs,LinkedIn
+mock_20,Senior Software Engineer,Classroom Tech,Technology,Full-time,2026-05-08,25L - 32L INR,"Pune, MH",https://www.linkedin.com/jobs,LinkedIn
+mock_21,Senior Frontend Developer,TCS,Technology,Full-time,2026-05-08,26L - 33L INR,"Chennai, TN",https://www.linkedin.com/jobs,LinkedIn
+mock_22,Senior Backend Developer,Infosys,Technology,Full-time,2026-05-08,27L - 34L INR,"Gurgaon, HR",https://www.linkedin.com/jobs,LinkedIn
+mock_23,Senior Full Stack Developer,Wipro,Technology,Full-time,2026-05-08,28L - 35L INR,"Noida, UP",https://www.linkedin.com/jobs,LinkedIn
+mock_24,Senior Data Scientist,HCLTech,Technology,Full-time,2026-05-08,29L - 36L INR,"Ahmedabad, GJ",https://www.linkedin.com/jobs,LinkedIn
+mock_25,Senior UI/UX Designer,Zomato,Technology,Full-time,2026-05-08,30L - 37L INR,"Jaipur, RJ",https://www.linkedin.com/jobs,LinkedIn
+mock_26,Senior DevOps Engineer,Swiggy,Technology,Full-time,2026-05-08,31L - 38L INR,"Chandigarh, PB",https://www.linkedin.com/jobs,LinkedIn
+mock_27,Senior Product Manager,Paytm,Technology,Full-time,2026-05-08,32L - 39L INR,"Lucknow, UP",https://www.linkedin.com/jobs,LinkedIn
+mock_28,Senior QA Analyst,PhonePe,Technology,Full-time,2026-05-08,33L - 40L INR,"Kochi, KL",https://www.linkedin.com/jobs,LinkedIn
+mock_29,Senior Mobile Developer,Flipkart,Technology,Full-time,2026-05-08,34L - 41L INR,"Indore, MP",https://www.linkedin.com/jobs,LinkedIn
+mock_30,Senior Software Engineer,Classroom Tech,Technology,Full-time,2026-05-08,35L - 42L INR,"Kolkata, WB",https://www.linkedin.com/jobs,LinkedIn
+mock_31,Senior Frontend Developer,TCS,Technology,Full-time,2026-05-08,36L - 43L INR,"Bangalore, KA",https://www.linkedin.com/jobs,LinkedIn
+mock_32,Senior Backend Developer,Infosys,Technology,Full-time,2026-05-08,37L - 44L INR,"Mumbai, MH",https://www.linkedin.com/jobs,LinkedIn
+mock_33,Senior Full Stack Developer,Wipro,Technology,Full-time,2026-05-08,38L - 45L INR,"Delhi, NCR",https://www.linkedin.com/jobs,LinkedIn
+mock_34,Senior Data Scientist,HCLTech,Technology,Full-time,2026-05-08,39L - 46L INR,"Hyderabad, TS",https://www.linkedin.com/jobs,LinkedIn
+mock_35,Senior UI/UX Designer,Zomato,Technology,Full-time,2026-05-08,40L - 47L INR,"Pune, MH",https://www.linkedin.com/jobs,LinkedIn
+mock_36,Senior DevOps Engineer,Swiggy,Technology,Full-time,2026-05-08,41L - 48L INR,"Chennai, TN",https://www.linkedin.com/jobs,LinkedIn
+mock_37,Senior Product Manager,Paytm,Technology,Full-time,2026-05-08,42L - 49L INR,"Gurgaon, HR",https://www.linkedin.com/jobs,LinkedIn
+mock_38,Senior QA Analyst,PhonePe,Technology,Full-time,2026-05-08,43L - 50L INR,"Noida, UP",https://www.linkedin.com/jobs,LinkedIn
+mock_39,Senior Mobile Developer,Flipkart,Technology,Full-time,2026-05-08,44L - 51L INR,"Ahmedabad, GJ",https://www.linkedin.com/jobs,LinkedIn
+mock_40,Senior Software Engineer,Classroom Tech,Technology,Full-time,2026-05-08,45L - 52L INR,"Jaipur, RJ",https://www.linkedin.com/jobs,LinkedIn
+mock_41,Senior Frontend Developer,TCS,Technology,Full-time,2026-05-08,46L - 53L INR,"Chandigarh, PB",https://www.linkedin.com/jobs,LinkedIn
+mock_42,Senior Backend Developer,Infosys,Technology,Full-time,2026-05-08,47L - 54L INR,"Lucknow, UP",https://www.linkedin.com/jobs,LinkedIn
+mock_43,Senior Full Stack Developer,Wipro,Technology,Full-time,2026-05-08,48L - 55L INR,"Kochi, KL",https://www.linkedin.com/jobs,LinkedIn
+mock_44,Senior Data Scientist,HCLTech,Technology,Full-time,2026-05-08,49L - 56L INR,"Indore, MP",https://www.linkedin.com/jobs,LinkedIn
+mock_45,Senior UI/UX Designer,Zomato,Technology,Full-time,2026-05-08,50L - 57L INR,"Kolkata, WB",https://www.linkedin.com/jobs,LinkedIn
+mock_46,Senior DevOps Engineer,Swiggy,Technology,Full-time,2026-05-08,51L - 58L INR,"Bangalore, KA",https://www.linkedin.com/jobs,LinkedIn
+mock_47,Senior Product Manager,Paytm,Technology,Full-time,2026-05-08,52L - 59L INR,"Mumbai, MH",https://www.linkedin.com/jobs,LinkedIn
+mock_48,Senior QA Analyst,PhonePe,Technology,Full-time,2026-05-08,53L - 60L INR,"Delhi, NCR",https://www.linkedin.com/jobs,LinkedIn
+mock_49,Senior Mobile Developer,Flipkart,Technology,Full-time,2026-05-08,54L - 61L INR,"Hyderabad, TS",https://www.linkedin.com/jobs,LinkedIn

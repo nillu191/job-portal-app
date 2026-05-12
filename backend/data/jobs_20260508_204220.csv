@@ -1,0 +1,6 @@
+id,title,company,category,job_type,publication_date,salary,location,url,source
+0,Senior React Developer,TechFlow,Software Development,Full-time,2026-05-08,120k - 150k,New York,https://example.com,Mock Engine
+1,Senior Python Developer,DataInsight,Data Science,Full-time,2026-05-08,120k - 150k,Remote,https://example.com,Mock Engine
+2,Senior DevOps Developer,CloudScale,Engineering,Full-time,2026-05-08,120k - 150k,London,https://example.com,Mock Engine
+3,Senior Product Developer,GoalSetter,Product Management,Full-time,2026-05-08,120k - 150k,San Francisco,https://example.com,Mock Engine
+4,Senior UI/UX Developer,PixelPerfect,Design,Full-time,2026-05-08,120k - 150k,Remote,https://example.com,Mock Engine
