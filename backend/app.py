@@ -59,7 +59,7 @@ def run_pipeline_internal():
         app.logger.error(f"Critical Pipeline error: {e}")
         return None
 
-@app.route('/api/pipeline/run', methods=['POST'])
+@app.route('/pipeline/run', methods=['POST'])
 def run_pipeline():
     """Trigger the full scraping and processing pipeline."""
     result = run_pipeline_internal()
@@ -78,7 +78,7 @@ if not os.environ.get('VERCEL'):
     # Shutdown scheduler when app exits
     atexit.register(lambda: scheduler.shutdown())
 
-@app.route('/api/jobs/search', methods=['GET'])
+@app.route('/jobs/search', methods=['GET'])
 def search_jobs():
     """Search within the latest dataset."""
     query = request.args.get('q', '').lower()
@@ -96,12 +96,12 @@ def search_jobs():
     
     return jsonify({"jobs": results.to_dict(orient='records')})
 
-@app.route('/api/data', methods=['GET'])
+@app.route('/data', methods=['GET'])
 def get_data():
     """Fetch the latest processed data."""
     return jsonify(latest_data)
 
-@app.route('/api/download/<filename>', methods=['GET'])
+@app.route('/download/<filename>', methods=['GET'])
 def download_file(filename):
     """Download reports."""
     file_path = os.path.join(processor.data_dir, filename)
