@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+dist/
+build/
+
+# Python
+venv/
+env/
+ENV/
+.env
+.env.local
+.env.*.local
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDEs
+.vscode/
+.idea/
+
+# Vercel
+.vercel
+
+# Misc
+.DS_Store
+*.log
