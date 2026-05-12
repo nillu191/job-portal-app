@@ -82,16 +82,22 @@ if not os.environ.get('VERCEL'):
 def search_jobs():
     """Search within the latest dataset."""
     query = request.args.get('q', '').lower()
+    
+    # If no data is loaded (common on Vercel startup), force a load/seed
+    if latest_df is None or latest_df.empty:
+        load_initial_data()
+        
     if latest_df is None or latest_df.empty:
         return jsonify({"jobs": []})
     
     if not query:
-        return jsonify({"jobs": latest_df.head(150).to_dict(orient='records')})
+        return jsonify({"jobs": latest_data["jobs"]})
 
+    # Robust filtering across all fields using na=False and regex=False
     results = latest_df[
-        latest_df['title'].str.lower().str.contains(query) | 
-        latest_df['company'].str.lower().str.contains(query) |
-        latest_df['location'].str.lower().str.contains(query)
+        latest_df['title'].str.lower().str.contains(query, na=False, regex=False) | 
+        latest_df['company'].str.lower().str.contains(query, na=False, regex=False) |
+        latest_df['location'].str.lower().str.contains(query, na=False, regex=False)
     ].head(100)
     
     return jsonify({"jobs": results.to_dict(orient='records')})
@@ -113,32 +119,30 @@ import glob
 import pandas as pd
 
 def load_initial_data():
-    """Load the most recent data from disk on startup to prevent empty dashboards."""
+    """Load data from disk or auto-seed with mock data to ensure dashboard is never empty."""
     global latest_df, latest_data
     try:
         data_files = glob.glob(os.path.join(processor.data_dir, "*.csv"))
         if data_files:
             latest_csv = max(data_files, key=os.path.getctime)
             app.logger.info(f"Loading initial data from {latest_csv}")
-            
             df = pd.read_csv(latest_csv)
-            df = df.astype(object).where(pd.notnull(df), None)
-            analytics = processor.get_analytics(df)
+        else:
+            # AUTO-SEED: If no data exists, generate the 25 States & MNC data immediately
+            app.logger.info("No data found. Auto-seeding dashboard with MNC and State data...")
+            jobs = scraper.get_mock_jobs() # This contains the 25 states data
+            df, _, _ = processor.process_jobs(jobs)
             
-            latest_df = df
-            latest_data["jobs"] = df.head(150).to_dict(orient='records')
-            latest_data["analytics"] = analytics
-            latest_data["last_updated"] = os.path.basename(latest_csv)
-            
-            # Find corresponding excel
-            excel_files = glob.glob(os.path.join(processor.data_dir, "*.xlsx"))
-            if excel_files:
-                latest_excel = max(excel_files, key=os.path.getctime)
-                latest_data["last_updated_excel"] = os.path.basename(latest_excel)
-                
-            app.logger.info("Initial data loaded successfully.")
+        df = df.astype(object).where(pd.notnull(df), None)
+        analytics = processor.get_analytics(df)
+        
+        latest_df = df
+        latest_data["jobs"] = df.head(150).to_dict(orient='records')
+        latest_data["analytics"] = analytics
+        
+        app.logger.info("Initial data loaded/seeded successfully.")
     except Exception as e:
-        app.logger.error(f"Failed to load initial data: {e}")
+        app.logger.error(f"Failed to load/seed initial data: {e}")
 
 if __name__ == '__main__':
     load_initial_data()

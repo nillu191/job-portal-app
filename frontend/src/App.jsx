@@ -36,17 +36,24 @@ const App = () => {
     }
   };
 
-  const handleSearch = async (e) => {
+  const handleSearch = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
-    try {
-      const response = await fetch(`/api/jobs/search?q=${query}`);
-      if (!response.ok) throw new Error('Search failed');
-      const result = await response.json();
-      setJobs(result.jobs);
-    } catch (err) {
-      console.error('Search failed:', err);
-    }
+    
+    // Clear previous timeout
+    if (window.searchTimeout) clearTimeout(window.searchTimeout);
+    
+    // Set new timeout for debouncing (300ms)
+    window.searchTimeout = setTimeout(async () => {
+      try {
+        const response = await fetch(`/api/jobs/search?q=${query}`);
+        if (!response.ok) throw new Error('Search failed');
+        const result = await response.json();
+        setJobs(result.jobs);
+      } catch (err) {
+        console.error('Search failed:', err);
+      }
+    }, 300);
   };
 
   const runPipeline = async () => {
