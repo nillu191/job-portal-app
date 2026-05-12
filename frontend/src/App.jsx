@@ -428,12 +428,24 @@ const App = () => {
           {!loading && jobs.length === 0 && (
             <div style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-secondary)' }}>
               <Layers size={48} style={{ opacity: 0.2, marginBottom: '1rem' }} />
-              <h3>No data available yet</h3>
-              <p style={{ marginTop: '0.5rem', marginBottom: '2rem' }}>The system needs to run the first data collection. Please click the button below to start fetching live job data.</p>
-              <button className="btn" onClick={runPipeline}>
-                <Play size={18} />
-                Run First Data Pipeline
-              </button>
+              {searchQuery ? (
+                <>
+                  <h3>No matches found</h3>
+                  <p style={{ marginTop: '0.5rem' }}>We couldn't find any jobs matching "{searchQuery}" in our database.</p>
+                  <button className="btn btn-outline" style={{ marginTop: '1.5rem' }} onClick={() => { setSearchQuery(''); fetchData(); }}>
+                    Clear Search
+                  </button>
+                </>
+              ) : (
+                <>
+                  <h3>No data available yet</h3>
+                  <p style={{ marginTop: '0.5rem', marginBottom: '2rem' }}>The system needs to run the first data collection. Please click the button below to start fetching live job data.</p>
+                  <button className="btn" onClick={runPipeline}>
+                    <Play size={18} />
+                    Run First Data Pipeline
+                  </button>
+                </>
+              )}
             </div>
           )}
         </div>

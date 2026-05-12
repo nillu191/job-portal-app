@@ -4,10 +4,21 @@ import numpy as np
 from datetime import datetime
 
 class DataProcessor:
-    def __init__(self, data_dir="data"):
-        self.data_dir = data_dir
+    def __init__(self, data_dir=None):
+        if data_dir is None:
+            # Use /tmp on Vercel as it's the only writable directory
+            if os.environ.get('VERCEL'):
+                self.data_dir = "/tmp/data"
+            else:
+                self.data_dir = "data"
+        else:
+            self.data_dir = data_dir
+            
         if not os.path.exists(self.data_dir):
-            os.makedirs(self.data_dir)
+            try:
+                os.makedirs(self.data_dir)
+            except Exception:
+                pass # Might be read-only in some environments
 
     def process_jobs(self, jobs):
         """Process and standardize job data with educational tagging."""
@@ -52,8 +63,12 @@ class DataProcessor:
         csv_path = os.path.join(self.data_dir, f"jobs_{timestamp}.csv")
         excel_path = os.path.join(self.data_dir, f"jobs_{timestamp}.xlsx")
         
-        df.to_csv(csv_path, index=False)
-        df.to_excel(excel_path, index=False)
+        try:
+            df.to_csv(csv_path, index=False)
+            df.to_excel(excel_path, index=False)
+        except Exception as e:
+            print(f"Warning: Could not save files: {e}")
+        
         df = df.astype(object).where(pd.notnull(df), None)
         
         return df, csv_path, excel_path
