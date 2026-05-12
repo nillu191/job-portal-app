@@ -22,13 +22,17 @@ const App = () => {
   const [userLocation, setUserLocation] = useState('');
 
   const fetchData = async () => {
+    setLoading(true);
     try {
       const response = await fetch('/api/data');
+      if (!response.ok) throw new Error('Backend not responding');
       const result = await response.json();
       setData(result);
       setJobs(result.jobs || []);
     } catch (err) {
       console.error('Failed to fetch data:', err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -37,6 +41,7 @@ const App = () => {
     setSearchQuery(query);
     try {
       const response = await fetch(`/api/jobs/search?q=${query}`);
+      if (!response.ok) throw new Error('Search failed');
       const result = await response.json();
       setJobs(result.jobs);
     } catch (err) {
@@ -47,10 +52,12 @@ const App = () => {
   const runPipeline = async () => {
     setLoading(true);
     try {
-      await fetch('/api/pipeline/run', { method: 'POST' });
+      const response = await fetch('/api/pipeline/run', { method: 'POST' });
+      if (!response.ok) throw new Error('Pipeline failed to start');
       fetchData();
     } catch (err) {
       console.error('Pipeline failed:', err);
+      alert('Pipeline failed to run. Check if your API keys are added to Vercel.');
     } finally {
       setLoading(false);
     }
@@ -405,9 +412,21 @@ const App = () => {
               </AnimatePresence>
             </tbody>
           </table>
-          {jobs.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-secondary)' }}>
-              No jobs found matching your criteria.
+          {loading && (
+            <div style={{ textAlign: 'center', padding: '3rem' }}>
+              <RefreshCw className="spin" size={40} style={{ color: 'var(--accent-primary)', marginBottom: '1rem' }} />
+              <p style={{ color: 'var(--text-secondary)' }}>Loading job intelligence data...</p>
+            </div>
+          )}
+          {!loading && jobs.length === 0 && (
+            <div style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-secondary)' }}>
+              <Layers size={48} style={{ opacity: 0.2, marginBottom: '1rem' }} />
+              <h3>No data available yet</h3>
+              <p style={{ marginTop: '0.5rem', marginBottom: '2rem' }}>The system needs to run the first data collection. Please click the button below to start fetching live job data.</p>
+              <button className="btn" onClick={runPipeline}>
+                <Play size={18} />
+                Run First Data Pipeline
+              </button>
             </div>
           )}
         </div>
