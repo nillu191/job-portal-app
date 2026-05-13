@@ -80,8 +80,12 @@ if not os.environ.get('VERCEL'):
 
 @app.route('/jobs/search', methods=['GET'])
 def search_jobs():
-    """Search within the latest dataset."""
+    """Search within the latest dataset with filters."""
     query = request.args.get('q', '').lower()
+    job_type = request.args.get('type', 'All')
+    experience = request.args.get('experience', 'All')
+    min_salary = request.args.get('min_salary')
+    max_salary = request.args.get('max_salary')
     
     # If no data is loaded (common on Vercel startup), force a load/seed
     if latest_df is None or latest_df.empty:
@@ -90,17 +94,35 @@ def search_jobs():
     if latest_df is None or latest_df.empty:
         return jsonify({"jobs": []})
     
-    if not query:
-        return jsonify({"jobs": latest_data["jobs"]})
+    results = latest_df.copy()
 
-    # Robust filtering across all fields using na=False and regex=False
-    results = latest_df[
-        latest_df['title'].str.lower().str.contains(query, na=False, regex=False) | 
-        latest_df['company'].str.lower().str.contains(query, na=False, regex=False) |
-        latest_df['location'].str.lower().str.contains(query, na=False, regex=False)
-    ].head(100)
+    # Apply search query
+    if query:
+        results = results[
+            results['title'].str.lower().str.contains(query, na=False, regex=False) | 
+            results['company'].str.lower().str.contains(query, na=False, regex=False) |
+            results['location'].str.lower().str.contains(query, na=False, regex=False)
+        ]
+
+    # Apply job type filter
+    if job_type != 'All':
+        results = results[results['job_type'] == job_type]
+
+    # Apply experience level filter
+    if experience != 'All':
+        results = results[results['experience_level'] == experience]
+
+    # Apply salary range filters
+    if min_salary:
+        try:
+            results = results[results['package'] >= float(min_salary)]
+        except (ValueError, TypeError): pass
+    if max_salary:
+        try:
+            results = results[results['package'] <= float(max_salary)]
+        except (ValueError, TypeError): pass
     
-    return jsonify({"jobs": results.to_dict(orient='records')})
+    return jsonify({"jobs": results.head(100).to_dict(orient='records')})
 
 @app.route('/data', methods=['GET'])
 def get_data():

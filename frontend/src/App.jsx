@@ -20,6 +20,9 @@ const App = () => {
   const [selectedDegree, setSelectedDegree] = useState('All');
   const [userSkills, setUserSkills] = useState('');
   const [userLocation, setUserLocation] = useState('');
+  const [selectedJobType, setSelectedJobType] = useState('All');
+  const [selectedExperience, setSelectedExperience] = useState('All');
+  const [salaryRange, setSalaryRange] = useState({ min: 0, max: 50 });
 
   const fetchData = async () => {
     setLoading(true);
@@ -36,8 +39,7 @@ const App = () => {
     }
   };
 
-  const handleSearch = (e) => {
-    const query = e.target.value;
+  const handleSearch = (query = searchQuery, type = selectedJobType, exp = selectedExperience, sal = salaryRange) => {
     setSearchQuery(query);
     
     // Clear previous timeout
@@ -46,7 +48,8 @@ const App = () => {
     // Set new timeout for debouncing (300ms)
     window.searchTimeout = setTimeout(async () => {
       try {
-        const response = await fetch(`/api/jobs/search?q=${query}`);
+        const url = `/api/jobs/search?q=${query}&type=${type}&experience=${exp}&min_salary=${sal.min}&max_salary=${sal.max}`;
+        const response = await fetch(url);
         if (!response.ok) throw new Error('Search failed');
         const result = await response.json();
         setJobs(result.jobs);
@@ -55,6 +58,10 @@ const App = () => {
       }
     }, 300);
   };
+
+  useEffect(() => {
+    handleSearch();
+  }, [selectedJobType, selectedExperience, salaryRange]);
 
   const runPipeline = async () => {
     setLoading(true);
@@ -97,9 +104,9 @@ const App = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Classroom Job Portal <span style={{ color: 'var(--accent-primary)' }}>AI</span>
+            Recruiters Hub <span style={{ color: 'var(--accent-primary)' }}>AI</span>
           </motion.h1>
-          <p className="subtitle">Professional hiring intelligence and market analytics for India.</p>
+          <p className="subtitle">Your Trusted place for Dream Job</p>
         </div>
         <div style={{ display: 'flex', gap: '1rem' }}>
           <button className="btn btn-outline" onClick={fetchData}>
@@ -153,7 +160,13 @@ const App = () => {
                 <Tooltip 
                   contentStyle={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: '12px', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
                 />
-                <Bar dataKey="value" fill="url(#colorGradient)" radius={[6, 6, 0, 0]} />
+                <Bar 
+                  dataKey="value" 
+                  fill="url(#colorGradient)" 
+                  radius={[6, 6, 0, 0]} 
+                  isAnimationActive={true}
+                  animationDuration={1500}
+                />
                 <defs>
                   <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#4f46e5" stopOpacity={0.9}/>
@@ -252,21 +265,48 @@ const App = () => {
         >
           <div className="market-bg-overlay"></div>
           <div style={{ position: 'relative', zIndex: 2 }}>
-            <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'white', marginBottom: '1.5rem', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>Market Placement Growth</h3>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'white', marginBottom: '1.5rem', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>Market Placement Growth (Trends)</h3>
             <div style={{ height: '350px' }}>
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={data.analytics.top_packages || []}>
+                <AreaChart data={data.analytics.market_growth_trend || []}>
                   <defs>
                     <linearGradient id="colorPlacements" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.4}/>
+                      <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.6}/>
                       <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
                     </linearGradient>
+                    <linearGradient id="colorRecruitments" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                    </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                  <XAxis dataKey="name" fontSize={10} stroke="#cbd5e1" />
-                  <YAxis fontSize={10} stroke="#cbd5e1" />
-                  <Tooltip contentStyle={{ background: 'rgba(15, 23, 42, 0.9)', border: 'none', borderRadius: '12px', color: 'white' }} />
-                  <Area type="monotone" dataKey="placements" stroke="#8b5cf6" strokeWidth={3} fillOpacity={1} fill="url(#colorPlacements)" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" vertical={false} />
+                  <XAxis dataKey="year" fontSize={12} stroke="#cbd5e1" tickLine={false} axisLine={false} />
+                  <YAxis fontSize={12} stroke="#cbd5e1" tickLine={false} axisLine={false} />
+                  <Tooltip 
+                    contentStyle={{ background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: 'white' }} 
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="total_recruitments" 
+                    name="Total Recruitment Volume"
+                    stroke="#10b981" 
+                    strokeWidth={2} 
+                    fillOpacity={1} 
+                    fill="url(#colorRecruitments)" 
+                    isAnimationActive={true}
+                    animationDuration={2500}
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="placements" 
+                    name="Successful Placements"
+                    stroke="#8b5cf6" 
+                    strokeWidth={4} 
+                    fillOpacity={1} 
+                    fill="url(#colorPlacements)" 
+                    isAnimationActive={true}
+                    animationDuration={2000}
+                  />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -332,13 +372,60 @@ const App = () => {
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
           <h3 style={{ fontSize: '1.1rem', fontWeight: '600' }}>Live Job Board</h3>
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
             <div className="badge badge-green" style={{ fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
               <RefreshCw size={12} className="spin" />
               Daily Auto-Sync Active
             </div>
             
-            {/* Smart Career Filter Button */}
+            {/* Filter Section Upfront */}
+            <div className="upfront-filters">
+              <select 
+                className="filter-select"
+                value={selectedJobType}
+                onChange={(e) => setSelectedJobType(e.target.value)}
+              >
+                <option value="All">All Job Types</option>
+                <option value="Remote">Remote</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="On-site">On-site</option>
+              </select>
+
+              <select 
+                className="filter-select"
+                value={selectedExperience}
+                onChange={(e) => setSelectedExperience(e.target.value)}
+              >
+                <option value="All">All Experience</option>
+                <option value="Fresher">Fresher</option>
+                <option value="Experienced">Experienced</option>
+              </select>
+
+              <div className="salary-filter">
+                <span style={{ fontSize: '0.8rem', fontWeight: '600', color: 'var(--text-secondary)' }}>Max Salary: {salaryRange.max} LPA</span>
+                <input 
+                  type="range" 
+                  min="0" 
+                  max="50" 
+                  value={salaryRange.max}
+                  onChange={(e) => setSalaryRange({ ...salaryRange, max: parseInt(e.target.value) })}
+                  style={{ width: '120px' }}
+                />
+              </div>
+            </div>
+
+            <div style={{ position: 'relative' }}>
+              <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
+              <input 
+                type="text" 
+                placeholder="Search jobs..." 
+                className="btn-outline search-input" 
+                style={{ padding: '0.5rem 1rem 0.5rem 2.5rem', borderRadius: '10px', width: '200px', outline: 'none' }}
+                value={searchQuery}
+                onChange={(e) => handleSearch(e.target.value)}
+              />
+            </div>
+
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -347,32 +434,15 @@ const App = () => {
               onClick={() => setShowSkillModal(true)}
             >
               <Filter size={16} />
-              Smart Career Filter
+              AI Matching
             </motion.button>
-
-            <div style={{ position: 'relative' }}>
-              <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
-              <input 
-                type="text" 
-                placeholder="Search by title, company or location..." 
-                className="btn-outline" 
-                style={{ padding: '0.5rem 1rem 0.5rem 2.5rem', borderRadius: '10px', width: '280px', outline: 'none' }}
-                value={searchQuery}
-                onChange={handleSearch}
-              />
-            </div>
+            
             {data.last_updated && (
               <div style={{ display: 'flex', gap: '0.5rem' }}>
                 <a href={`/api/download/${data.last_updated}`} className="btn btn-outline" style={{ fontSize: '0.8rem', padding: '0.5rem 1rem' }} download>
                   <Download size={16} />
                   CSV
                 </a>
-                {data.last_updated_excel && (
-                  <a href={`/api/download/${data.last_updated_excel}`} className="btn btn-outline" style={{ fontSize: '0.8rem', padding: '0.5rem 1rem' }} download>
-                    <Download size={16} />
-                    Excel
-                  </a>
-                )}
               </div>
             )}
           </div>
@@ -493,6 +563,36 @@ const App = () => {
         .badge-blue { background: rgba(59, 130, 246, 0.1); color: #2563eb; }
         .badge-green { background: rgba(16, 185, 129, 0.1); color: #059669; }
         .badge-purple { background: rgba(139, 92, 246, 0.1); color: #7c3aed; }
+        
+        .upfront-filters {
+          display: flex;
+          gap: 0.75rem;
+          align-items: center;
+          background: #f1f5f9;
+          padding: 0.4rem 1rem;
+          border-radius: 16px;
+          border: 1px solid #e2e8f0;
+        }
+        .filter-select {
+          background: transparent;
+          border: none;
+          font-weight: 600;
+          color: var(--text-primary);
+          font-size: 0.85rem;
+          outline: none;
+          cursor: pointer;
+        }
+        .salary-filter {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          border-left: 1px solid #cbd5e1;
+          padding-left: 0.75rem;
+        }
+        .search-input:focus {
+          border-color: var(--accent-primary);
+          box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
         
         .company-bg-panel {
           position: relative;

@@ -21,12 +21,12 @@ class DataProcessor:
                 pass # Might be read-only in some environments
 
     def process_jobs(self, jobs):
-        """Process and standardize job data with educational tagging."""
+        """Process and standardize job data with educational tagging and filters."""
         df = pd.DataFrame(jobs)
         
         # Add educational tagging for smart filtering
         def tag_education(row):
-            title = str(row['title']).upper()
+            title = str(row.get('title', '')).upper()
             tags = []
             if any(k in title for k in ['BCA', 'MCA', 'BSC', 'MSC', 'B.TECH', 'BTECH', 'M.TECH', 'MTECH']):
                 if 'BCA' in title: tags.append('BCA')
@@ -45,7 +45,27 @@ class DataProcessor:
                     tags.append('NON-TECH')
             return ", ".join(list(set(tags))) if tags else "General"
 
+        # Add experience level tagging
+        def tag_experience(row):
+            title = str(row.get('title', '')).lower()
+            if any(k in title for k in ['intern', 'trainee', 'fresher', 'junior', 'graduate', 'entry', '0-1 year', '0-2 years']):
+                return "Fresher"
+            return "Experienced"
+
+        # Normalize job type
+        def normalize_job_type(row):
+            jt = str(row.get('job_type', '')).lower()
+            loc = str(row.get('location', '')).lower()
+            
+            if 'remote' in jt or 'remote' in loc:
+                return "Remote"
+            if 'hybrid' in jt or 'hybrid' in loc:
+                return "Hybrid"
+            return "On-site"
+
         df['education'] = df.apply(tag_education, axis=1)
+        df['experience_level'] = df.apply(tag_experience, axis=1)
+        df['job_type'] = df.apply(normalize_job_type, axis=1)
         
         # Simulate placements and packages for top MNCs
         mncs = ["Capgemini", "Cognizant", "Deloitte", "Goldman Sachs", "KPMG", "PwC", "Accenture", "Oracle"]
@@ -53,7 +73,14 @@ class DataProcessor:
         
         # Simulated stats for dashboard
         df['placements'] = df['is_mnc'].apply(lambda x: np.random.randint(50, 200) if x else np.random.randint(5, 50))
-        df['package'] = df['is_mnc'].apply(lambda x: np.random.randint(6, 25) if x else np.random.randint(3, 8))
+        
+        # Ensure package is always a numeric value (LPA)
+        def get_package(row):
+            if 'package' in row and row['package'] is not None:
+                return row['package']
+            return np.random.randint(6, 25) if row['is_mnc'] else np.random.randint(3, 8)
+            
+        df['package'] = df.apply(get_package, axis=1)
         
         # Ensure directories exist
         if not os.path.exists(self.data_dir):
@@ -93,7 +120,7 @@ class DataProcessor:
         return f"https://logo.clearbit.com/{domain}"
 
     def get_analytics(self, df):
-        """Generate analytics from the cleaned dataframe."""
+        """Generate enhanced analytics from the cleaned dataframe."""
         if df.empty:
             return {}
 
@@ -103,7 +130,6 @@ class DataProcessor:
         
         for name in top_companies_names:
             count = int(df[df['company'] == name].shape[0])
-            # Heuristic for top package: Random between 18-45 LPA for top tech, else 10-25
             is_big_tech = name in ["TCS", "Infosys", "Google", "Microsoft", "Amazon", "Flipkart"]
             base = 20 if is_big_tech else 10
             pkg = base + (hash(name) % 25)
@@ -112,10 +138,32 @@ class DataProcessor:
                 "name": name, 
                 "count": count, 
                 "logo": self.get_company_logo(name),
-                "placements": count * 5, # Simulated placements
+                "placements": count * 5,
                 "top_package": f"{pkg} LPA"
             })
             top_packages.append({"name": name, "package": pkg, "placements": count * 5})
+
+        # Market Growth Trend (Multi-year) - Increasing to Decreasing wise ordering
+        years = ["2021", "2022", "2023", "2024", "2025"]
+        # Values: 450, 780, 1200, 950, 600 (Bell curve shape)
+        trend_values = [450, 780, 1200, 950, 600]
+        market_growth_trend = []
+        for i, year in enumerate(years):
+            market_growth_trend.append({
+                "year": year,
+                "placements": trend_values[i],
+                "total_recruitments": trend_values[i] + np.random.randint(100, 300)
+            })
+
+        # Ensure 6+ categories
+        categories = df['category'].value_counts().to_dict()
+        default_categories = ["Technology", "Healthcare", "Finance", "Education", "Marketing", "Operations"]
+        for cat in default_categories:
+            if cat not in categories:
+                categories[cat] = np.random.randint(10, 50)
+        
+        # Take top 6-8 categories
+        category_distribution = dict(sorted(categories.items(), key=lambda x: x[1], reverse=True)[:8])
 
         # Generate 1-year historical data for top mass recruiters
         months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -128,7 +176,7 @@ class DataProcessor:
                 base_vol = 150 + (hash(name) % 300)
                 seasonal_multiplier = 1.5 if month in ["Aug", "Sep", "Jan"] else 1.0
                 vol = int(base_vol * seasonal_multiplier + np.random.randint(-20, 50))
-                month_data[name] = max(50, vol) # Ensure no negative/too small values
+                month_data[name] = max(50, vol)
             mass_recruiter_history.append(month_data)
             
         average_salaries = {}
@@ -143,10 +191,11 @@ class DataProcessor:
             "top_companies_list": top_companies_with_logos,
             "top_packages": sorted(top_packages, key=lambda x: x['package'], reverse=True)[:6],
             "top_companies": df['company'].value_counts().head(10).to_dict(),
-            "category_distribution": df['category'].value_counts().head(10).to_dict(),
+            "category_distribution": category_distribution,
             "location_stats": df['location'].value_counts().head(10).to_dict(),
             "job_types": df['job_type'].value_counts().to_dict(),
             "mass_recruiter_history": mass_recruiter_history,
+            "market_growth_trend": market_growth_trend,
             "average_salaries": average_salaries
         }
         return analytics
