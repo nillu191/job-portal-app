@@ -143,17 +143,23 @@ class DataProcessor:
             })
             top_packages.append({"name": name, "package": pkg, "placements": count * 5})
 
-        # Market Growth Trend (Multi-year) - Increasing to Decreasing wise ordering
+        # Market Growth Trend (Multi-year) - Including Company Names
         years = ["2021", "2022", "2023", "2024", "2025"]
-        # Values: 450, 780, 1200, 950, 600 (Bell curve shape)
         trend_values = [450, 780, 1200, 950, 600]
         market_growth_trend = []
+        top_3_mncs = ["TCS", "Accenture", "Cognizant"]
+        
         for i, year in enumerate(years):
-            market_growth_trend.append({
+            data_point = {
                 "year": year,
                 "placements": trend_values[i],
                 "total_recruitments": trend_values[i] + np.random.randint(100, 300)
-            })
+            }
+            # Add company specific stats for the graph
+            for company in top_3_mncs:
+                data_point[company] = int(trend_values[i] * (0.2 + np.random.uniform(-0.05, 0.05)))
+            
+            market_growth_trend.append(data_point)
 
         # Ensure 6+ categories
         categories = df['category'].value_counts().to_dict()

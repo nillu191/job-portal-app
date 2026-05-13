@@ -39,24 +39,33 @@ const App = () => {
     }
   };
 
+  const handleReset = () => {
+    setSearchQuery('');
+    setSelectedJobType('All');
+    setSelectedExperience('All');
+    setSalaryRange({ min: 0, max: 50 });
+    fetchData();
+  };
+
   const handleSearch = (query = searchQuery, type = selectedJobType, exp = selectedExperience, sal = salaryRange) => {
     setSearchQuery(query);
     
-    // Clear previous timeout
     if (window.searchTimeout) clearTimeout(window.searchTimeout);
     
-    // Set new timeout for debouncing (300ms)
     window.searchTimeout = setTimeout(async () => {
       try {
-        const url = `/api/jobs/search?q=${query}&type=${type}&experience=${exp}&min_salary=${sal.min}&max_salary=${sal.max}`;
+        setLoading(true);
+        const url = `/api/jobs/search?q=${encodeURIComponent(query)}&type=${type}&experience=${exp}&min_salary=${sal.min}&max_salary=${sal.max}`;
         const response = await fetch(url);
         if (!response.ok) throw new Error('Search failed');
         const result = await response.json();
-        setJobs(result.jobs);
+        setJobs(result.jobs || []);
       } catch (err) {
         console.error('Search failed:', err);
+      } finally {
+        setLoading(false);
       }
-    }, 300);
+    }, 400);
   };
 
   useEffect(() => {
@@ -299,7 +308,7 @@ const App = () => {
                   <Area 
                     type="monotone" 
                     dataKey="placements" 
-                    name="Successful Placements"
+                    name="Overall Placements"
                     stroke="#8b5cf6" 
                     strokeWidth={4} 
                     fillOpacity={1} 
@@ -307,6 +316,18 @@ const App = () => {
                     isAnimationActive={true}
                     animationDuration={2000}
                   />
+                  {['TCS', 'Accenture', 'Cognizant'].map((comp, idx) => (
+                    <Area
+                      key={comp}
+                      type="monotone"
+                      dataKey={comp}
+                      name={`${comp} Recruitment`}
+                      stroke={COLORS[idx % COLORS.length]}
+                      fill="transparent"
+                      strokeWidth={2}
+                      strokeDasharray="5 5"
+                    />
+                  ))}
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -414,17 +435,27 @@ const App = () => {
               </div>
             </div>
 
-            <div style={{ position: 'relative' }}>
-              <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
-              <input 
-                type="text" 
-                placeholder="Search jobs..." 
-                className="btn-outline search-input" 
-                style={{ padding: '0.5rem 1rem 0.5rem 2.5rem', borderRadius: '10px', width: '200px', outline: 'none' }}
-                value={searchQuery}
-                onChange={(e) => handleSearch(e.target.value)}
-              />
+            <div style={{ position: 'relative', display: 'flex', gap: '0.5rem' }}>
+              <div style={{ position: 'relative' }}>
+                <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
+                <input 
+                  type="text" 
+                  placeholder="Company, title or city..." 
+                  className="btn-outline search-input" 
+                  style={{ padding: '0.5rem 1rem 0.5rem 2.5rem', borderRadius: '10px', width: '220px', outline: 'none' }}
+                  value={searchQuery}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                />
+              </div>
+              <button className="btn btn-primary btn-sm" onClick={() => handleSearch()}>
+                Find Jobs
+              </button>
             </div>
+
+            <button className="btn btn-outline btn-sm" onClick={handleReset} title="Clear all filters">
+              <RefreshCw size={14} />
+            </button>
 
             <motion.button 
               whileHover={{ scale: 1.05 }}
