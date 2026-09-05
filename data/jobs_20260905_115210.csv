@@ -1,0 +1,501 @@
+id,title,company,location,category,job_type,url,source,priority,education,experience_level,is_mnc,placements,package
+real_mock_0,Software Engineer,Capgemini,"Andhra Pradesh, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Andhra%20Pradesh,LinkedIn,1,"MCA, BTECH, BCA",Experienced,True,180,13
+real_mock_1,Data Analyst,Cognizant,"Assam, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-assam,Naukri,1,"BTECH, BSC, MSC",Experienced,True,173,16
+real_mock_2,Consultant,Deloitte,"Bihar, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,True,183,11
+real_mock_3,Accountant,Goldman Sachs,"Chhattisgarh, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,True,81,20
+real_mock_4,BCA Intern,KPMG,"Delhi, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Delhi,LinkedIn,1,BCA,Fresher,True,145,12
+real_mock_5,MCA Trainee,PwC,"Goa, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-goa,Naukri,1,MCA,Fresher,True,72,18
+real_mock_6,B.Tech Graduate,Accenture,"Gujarat, India",Corporate,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,True,165,17
+real_mock_7,HR Manager,Oracle,"Haryana, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,True,60,16
+real_mock_8,Product Manager,HDFC Bank,"Himachal Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Himachal%20Pradesh,LinkedIn,1,General,Experienced,False,6,7
+real_mock_9,DevOps Engineer,Coal India,"Jharkhand, India",Corporate,On-site,https://www.naukri.com/devops-engineer-jobs-in-jharkhand,Naukri,1,"MCA, BTECH, BCA",Experienced,False,26,5
+real_mock_10,Software Engineer,TCS,"Karnataka, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,22,7
+real_mock_11,Data Analyst,Infosys,"Kerala, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,44,5
+real_mock_12,Consultant,Wipro,"Madhya Pradesh, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Madhya%20Pradesh,LinkedIn,1,General,Experienced,False,25,5
+real_mock_13,Accountant,Reliance,"Maharashtra, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-maharashtra,Naukri,1,General,Experienced,False,13,6
+real_mock_14,BCA Intern,L&T Technology Services,"Meghalaya, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,40,6
+real_mock_15,MCA Trainee,Tech Mahindra,"Odisha, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,15,7
+real_mock_16,B.Tech Graduate,IBM,"Punjab, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Punjab,LinkedIn,1,BTECH,Fresher,False,17,5
+real_mock_17,HR Manager,Teleperformance,"Rajasthan, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-rajasthan,Naukri,1,NON-TECH,Experienced,False,43,6
+real_mock_18,Product Manager,Kochar Infotech,"Sikkim, India",Corporate,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,29,6
+real_mock_19,DevOps Engineer,Aegis,"Tamil Nadu, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,13,7
+real_mock_20,Software Engineer,Aye Finance,"Telangana, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Telangana,LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,21,6
+real_mock_21,Data Analyst,JP Morgan,"Uttar Pradesh, India",Corporate,On-site,https://www.naukri.com/data-analyst-jobs-in-uttar-pradesh,Naukri,1,"BTECH, BSC, MSC",Experienced,False,16,4
+real_mock_22,Consultant,Nestle,"Uttarakhand, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,15,7
+real_mock_23,Accountant,Swiggy,"West Bengal, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,33,5
+real_mock_24,BCA Intern,Flipkart,"Tripura, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Tripura,LinkedIn,1,BCA,Fresher,False,47,3
+real_mock_25,MCA Trainee,Capgemini,"Mumbai (Bombay), India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-mumbai-(bombay),Naukri,1,MCA,Fresher,True,82,16
+real_mock_26,B.Tech Graduate,Cognizant,"Navi Mumbai, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,True,191,15
+real_mock_27,HR Manager,Deloitte,"Noida, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,True,170,19
+real_mock_28,Product Manager,Goldman Sachs,"Gurgaon, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Gurgaon,LinkedIn,1,General,Experienced,True,68,20
+real_mock_29,DevOps Engineer,KPMG,"Gurugram, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-gurugram,Naukri,1,"MCA, BTECH, BCA",Experienced,True,170,14
+real_mock_30,Software Engineer,PwC,"Bangalore, India",Corporate,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,True,138,23
+real_mock_31,Data Analyst,Accenture,"Chennai, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,True,55,24
+real_mock_32,Consultant,Oracle,"Jalpaiguri, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Jalpaiguri,LinkedIn,1,General,Experienced,True,85,19
+real_mock_33,Accountant,HDFC Bank,"Pune, India",Corporate,On-site,https://www.naukri.com/accountant-jobs-in-pune,Naukri,1,General,Experienced,False,12,7
+real_mock_34,BCA Intern,Coal India,"Hyderabad, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,40,3
+real_mock_35,MCA Trainee,TCS,"Andhra Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,21,7
+real_mock_36,B.Tech Graduate,Infosys,"Assam, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Assam,LinkedIn,1,BTECH,Fresher,False,9,5
+real_mock_37,HR Manager,Wipro,"Bihar, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-bihar,Naukri,1,NON-TECH,Experienced,False,29,6
+real_mock_38,Product Manager,Reliance,"Chhattisgarh, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,25,5
+real_mock_39,DevOps Engineer,L&T Technology Services,"Delhi, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,12,5
+real_mock_40,Software Engineer,Tech Mahindra,"Goa, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Goa,LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,13,6
+real_mock_41,Data Analyst,IBM,"Gujarat, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-gujarat,Naukri,1,"BTECH, BSC, MSC",Experienced,False,8,5
+real_mock_42,Consultant,Teleperformance,"Haryana, India",Corporate,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,35,4
+real_mock_43,Accountant,Kochar Infotech,"Himachal Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,10,5
+real_mock_44,BCA Intern,Aegis,"Jharkhand, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Jharkhand,LinkedIn,1,BCA,Fresher,False,20,5
+real_mock_45,MCA Trainee,Aye Finance,"Karnataka, India",Corporate,On-site,https://www.naukri.com/mca-trainee-jobs-in-karnataka,Naukri,1,MCA,Fresher,False,30,7
+real_mock_46,B.Tech Graduate,JP Morgan,"Kerala, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,27,6
+real_mock_47,HR Manager,Nestle,"Madhya Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,10,7
+real_mock_48,Product Manager,Swiggy,"Maharashtra, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Maharashtra,LinkedIn,1,General,Experienced,False,19,5
+real_mock_49,DevOps Engineer,Flipkart,"Meghalaya, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-meghalaya,Naukri,1,"MCA, BTECH, BCA",Experienced,False,19,7
+real_mock_50,Software Engineer,Capgemini,"Odisha, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,True,181,6
+real_mock_51,Data Analyst,Cognizant,"Punjab, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,True,164,11
+real_mock_52,Consultant,Deloitte,"Rajasthan, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Rajasthan,LinkedIn,1,General,Experienced,True,198,21
+real_mock_53,Accountant,Goldman Sachs,"Sikkim, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-sikkim,Naukri,1,General,Experienced,True,190,21
+real_mock_54,BCA Intern,KPMG,"Tamil Nadu, India",Corporate,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,True,198,24
+real_mock_55,MCA Trainee,PwC,"Telangana, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,True,110,15
+real_mock_56,B.Tech Graduate,Accenture,"Uttar Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Uttar%20Pradesh,LinkedIn,1,BTECH,Fresher,True,171,12
+real_mock_57,HR Manager,Oracle,"Uttarakhand, India",Corporate,On-site,https://www.naukri.com/hr-manager-jobs-in-uttarakhand,Naukri,1,NON-TECH,Experienced,True,70,11
+real_mock_58,Product Manager,HDFC Bank,"West Bengal, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,11,3
+real_mock_59,DevOps Engineer,Coal India,"Tripura, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,14,7
+real_mock_60,Software Engineer,TCS,"Mumbai (Bombay), India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Mumbai%20(Bombay),LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,31,3
+real_mock_61,Data Analyst,Infosys,"Navi Mumbai, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-navi-mumbai,Naukri,1,"BTECH, BSC, MSC",Experienced,False,32,7
+real_mock_62,Consultant,Wipro,"Noida, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,18,5
+real_mock_63,Accountant,Reliance,"Gurgaon, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,19,7
+real_mock_64,BCA Intern,L&T Technology Services,"Gurugram, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Gurugram,LinkedIn,1,BCA,Fresher,False,47,6
+real_mock_65,MCA Trainee,Tech Mahindra,"Bangalore, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-bangalore,Naukri,1,MCA,Fresher,False,22,5
+real_mock_66,B.Tech Graduate,IBM,"Chennai, India",Corporate,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,13,4
+real_mock_67,HR Manager,Teleperformance,"Jalpaiguri, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,30,7
+real_mock_68,Product Manager,Kochar Infotech,"Pune, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Pune,LinkedIn,1,General,Experienced,False,30,7
+real_mock_69,DevOps Engineer,Aegis,"Hyderabad, India",Corporate,On-site,https://www.naukri.com/devops-engineer-jobs-in-hyderabad,Naukri,1,"MCA, BTECH, BCA",Experienced,False,7,6
+real_mock_70,Software Engineer,Aye Finance,"Andhra Pradesh, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,31,3
+real_mock_71,Data Analyst,JP Morgan,"Assam, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,44,3
+real_mock_72,Consultant,Nestle,"Bihar, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Bihar,LinkedIn,1,General,Experienced,False,31,5
+real_mock_73,Accountant,Swiggy,"Chhattisgarh, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-chhattisgarh,Naukri,1,General,Experienced,False,35,5
+real_mock_74,BCA Intern,Flipkart,"Delhi, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,21,5
+real_mock_75,MCA Trainee,Capgemini,"Goa, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,True,113,6
+real_mock_76,B.Tech Graduate,Cognizant,"Gujarat, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Gujarat,LinkedIn,1,BTECH,Fresher,True,178,6
+real_mock_77,HR Manager,Deloitte,"Haryana, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-haryana,Naukri,1,NON-TECH,Experienced,True,124,23
+real_mock_78,Product Manager,Goldman Sachs,"Himachal Pradesh, India",Corporate,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,True,71,18
+real_mock_79,DevOps Engineer,KPMG,"Jharkhand, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,True,164,19
+real_mock_80,Software Engineer,PwC,"Karnataka, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Karnataka,LinkedIn,1,"MCA, BTECH, BCA",Experienced,True,183,21
+real_mock_81,Data Analyst,Accenture,"Kerala, India",Corporate,On-site,https://www.naukri.com/data-analyst-jobs-in-kerala,Naukri,1,"BTECH, BSC, MSC",Experienced,True,133,12
+real_mock_82,Consultant,Oracle,"Madhya Pradesh, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,True,102,7
+real_mock_83,Accountant,HDFC Bank,"Maharashtra, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,9,7
+real_mock_84,BCA Intern,Coal India,"Meghalaya, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Meghalaya,LinkedIn,1,BCA,Fresher,False,32,3
+real_mock_85,MCA Trainee,TCS,"Odisha, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-odisha,Naukri,1,MCA,Fresher,False,16,4
+real_mock_86,B.Tech Graduate,Infosys,"Punjab, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,43,6
+real_mock_87,HR Manager,Wipro,"Rajasthan, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,12,5
+real_mock_88,Product Manager,Reliance,"Sikkim, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Sikkim,LinkedIn,1,General,Experienced,False,35,7
+real_mock_89,DevOps Engineer,L&T Technology Services,"Tamil Nadu, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-tamil-nadu,Naukri,1,"MCA, BTECH, BCA",Experienced,False,36,3
+real_mock_90,Software Engineer,Tech Mahindra,"Telangana, India",Corporate,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,38,4
+real_mock_91,Data Analyst,IBM,"Uttar Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,17,6
+real_mock_92,Consultant,Teleperformance,"Uttarakhand, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Uttarakhand,LinkedIn,1,General,Experienced,False,7,4
+real_mock_93,Accountant,Kochar Infotech,"West Bengal, India",Corporate,On-site,https://www.naukri.com/accountant-jobs-in-west-bengal,Naukri,1,General,Experienced,False,40,7
+real_mock_94,BCA Intern,Aegis,"Tripura, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,14,6
+real_mock_95,MCA Trainee,Aye Finance,"Mumbai (Bombay), India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,30,4
+real_mock_96,B.Tech Graduate,JP Morgan,"Navi Mumbai, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Navi%20Mumbai,LinkedIn,1,BTECH,Fresher,False,27,6
+real_mock_97,HR Manager,Nestle,"Noida, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-noida,Naukri,1,NON-TECH,Experienced,False,9,4
+real_mock_98,Product Manager,Swiggy,"Gurgaon, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,41,7
+real_mock_99,DevOps Engineer,Flipkart,"Gurugram, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,22,7
+real_mock_100,Software Engineer,Capgemini,"Bangalore, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Bangalore,LinkedIn,1,"MCA, BTECH, BCA",Experienced,True,199,23
+real_mock_101,Data Analyst,Cognizant,"Chennai, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-chennai,Naukri,1,"BTECH, BSC, MSC",Experienced,True,112,16
+real_mock_102,Consultant,Deloitte,"Jalpaiguri, India",Corporate,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,True,118,18
+real_mock_103,Accountant,Goldman Sachs,"Pune, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,True,89,24
+real_mock_104,BCA Intern,KPMG,"Hyderabad, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Hyderabad,LinkedIn,1,BCA,Fresher,True,196,15
+real_mock_105,MCA Trainee,PwC,"Andhra Pradesh, India",Corporate,On-site,https://www.naukri.com/mca-trainee-jobs-in-andhra-pradesh,Naukri,1,MCA,Fresher,True,108,22
+real_mock_106,B.Tech Graduate,Accenture,"Assam, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,True,73,9
+real_mock_107,HR Manager,Oracle,"Bihar, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,True,53,15
+real_mock_108,Product Manager,HDFC Bank,"Chhattisgarh, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Chhattisgarh,LinkedIn,1,General,Experienced,False,38,4
+real_mock_109,DevOps Engineer,Coal India,"Delhi, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-delhi,Naukri,1,"MCA, BTECH, BCA",Experienced,False,14,5
+real_mock_110,Software Engineer,TCS,"Goa, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,35,5
+real_mock_111,Data Analyst,Infosys,"Gujarat, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,49,3
+real_mock_112,Consultant,Wipro,"Haryana, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Haryana,LinkedIn,1,General,Experienced,False,40,5
+real_mock_113,Accountant,Reliance,"Himachal Pradesh, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-himachal-pradesh,Naukri,1,General,Experienced,False,21,7
+real_mock_114,BCA Intern,L&T Technology Services,"Jharkhand, India",Corporate,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,6,4
+real_mock_115,MCA Trainee,Tech Mahindra,"Karnataka, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,42,3
+real_mock_116,B.Tech Graduate,IBM,"Kerala, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Kerala,LinkedIn,1,BTECH,Fresher,False,20,4
+real_mock_117,HR Manager,Teleperformance,"Madhya Pradesh, India",Corporate,On-site,https://www.naukri.com/hr-manager-jobs-in-madhya-pradesh,Naukri,1,NON-TECH,Experienced,False,49,6
+real_mock_118,Product Manager,Kochar Infotech,"Maharashtra, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,21,7
+real_mock_119,DevOps Engineer,Aegis,"Meghalaya, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,29,6
+real_mock_120,Software Engineer,Aye Finance,"Odisha, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Odisha,LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,28,7
+real_mock_121,Data Analyst,JP Morgan,"Punjab, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-punjab,Naukri,1,"BTECH, BSC, MSC",Experienced,False,15,3
+real_mock_122,Consultant,Nestle,"Rajasthan, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,26,4
+real_mock_123,Accountant,Swiggy,"Sikkim, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,47,7
+real_mock_124,BCA Intern,Flipkart,"Tamil Nadu, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Tamil%20Nadu,LinkedIn,1,BCA,Fresher,False,41,7
+real_mock_125,MCA Trainee,Capgemini,"Telangana, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-telangana,Naukri,1,MCA,Fresher,True,70,16
+real_mock_126,B.Tech Graduate,Cognizant,"Uttar Pradesh, India",Corporate,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,True,188,22
+real_mock_127,HR Manager,Deloitte,"Uttarakhand, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,True,199,15
+real_mock_128,Product Manager,Goldman Sachs,"West Bengal, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=West%20Bengal,LinkedIn,1,General,Experienced,True,113,20
+real_mock_129,DevOps Engineer,KPMG,"Tripura, India",Corporate,On-site,https://www.naukri.com/devops-engineer-jobs-in-tripura,Naukri,1,"MCA, BTECH, BCA",Experienced,True,110,10
+real_mock_130,Software Engineer,PwC,"Mumbai (Bombay), India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,True,151,17
+real_mock_131,Data Analyst,Accenture,"Navi Mumbai, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,True,130,9
+real_mock_132,Consultant,Oracle,"Noida, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Noida,LinkedIn,1,General,Experienced,True,178,17
+real_mock_133,Accountant,HDFC Bank,"Gurgaon, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-gurgaon,Naukri,1,General,Experienced,False,34,5
+real_mock_134,BCA Intern,Coal India,"Gurugram, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,44,6
+real_mock_135,MCA Trainee,TCS,"Bangalore, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,11,5
+real_mock_136,B.Tech Graduate,Infosys,"Chennai, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Chennai,LinkedIn,1,BTECH,Fresher,False,32,5
+real_mock_137,HR Manager,Wipro,"Jalpaiguri, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-jalpaiguri,Naukri,1,NON-TECH,Experienced,False,36,5
+real_mock_138,Product Manager,Reliance,"Pune, India",Corporate,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,45,5
+real_mock_139,DevOps Engineer,L&T Technology Services,"Hyderabad, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,19,3
+real_mock_140,Software Engineer,Tech Mahindra,"Andhra Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Andhra%20Pradesh,LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,42,5
+real_mock_141,Data Analyst,IBM,"Assam, India",Corporate,On-site,https://www.naukri.com/data-analyst-jobs-in-assam,Naukri,1,"BTECH, BSC, MSC",Experienced,False,30,6
+real_mock_142,Consultant,Teleperformance,"Bihar, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,8,3
+real_mock_143,Accountant,Kochar Infotech,"Chhattisgarh, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,38,7
+real_mock_144,BCA Intern,Aegis,"Delhi, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Delhi,LinkedIn,1,BCA,Fresher,False,45,7
+real_mock_145,MCA Trainee,Aye Finance,"Goa, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-goa,Naukri,1,MCA,Fresher,False,17,6
+real_mock_146,B.Tech Graduate,JP Morgan,"Gujarat, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,13,7
+real_mock_147,HR Manager,Nestle,"Haryana, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,39,5
+real_mock_148,Product Manager,Swiggy,"Himachal Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Himachal%20Pradesh,LinkedIn,1,General,Experienced,False,49,5
+real_mock_149,DevOps Engineer,Flipkart,"Jharkhand, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-jharkhand,Naukri,1,"MCA, BTECH, BCA",Experienced,False,12,4
+real_mock_150,Software Engineer,Capgemini,"Karnataka, India",Corporate,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,True,130,21
+real_mock_151,Data Analyst,Cognizant,"Kerala, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,True,85,11
+real_mock_152,Consultant,Deloitte,"Madhya Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Madhya%20Pradesh,LinkedIn,1,General,Experienced,True,82,21
+real_mock_153,Accountant,Goldman Sachs,"Maharashtra, India",Corporate,On-site,https://www.naukri.com/accountant-jobs-in-maharashtra,Naukri,1,General,Experienced,True,192,12
+real_mock_154,BCA Intern,KPMG,"Meghalaya, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,True,176,10
+real_mock_155,MCA Trainee,PwC,"Odisha, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,True,71,13
+real_mock_156,B.Tech Graduate,Accenture,"Punjab, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Punjab,LinkedIn,1,BTECH,Fresher,True,65,9
+real_mock_157,HR Manager,Oracle,"Rajasthan, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-rajasthan,Naukri,1,NON-TECH,Experienced,True,198,6
+real_mock_158,Product Manager,HDFC Bank,"Sikkim, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,41,6
+real_mock_159,DevOps Engineer,Coal India,"Tamil Nadu, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,26,7
+real_mock_160,Software Engineer,TCS,"Telangana, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Telangana,LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,9,7
+real_mock_161,Data Analyst,Infosys,"Uttar Pradesh, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-uttar-pradesh,Naukri,1,"BTECH, BSC, MSC",Experienced,False,47,6
+real_mock_162,Consultant,Wipro,"Uttarakhand, India",Corporate,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,32,3
+real_mock_163,Accountant,Reliance,"West Bengal, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,10,6
+real_mock_164,BCA Intern,L&T Technology Services,"Tripura, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Tripura,LinkedIn,1,BCA,Fresher,False,43,5
+real_mock_165,MCA Trainee,Tech Mahindra,"Mumbai (Bombay), India",Corporate,On-site,https://www.naukri.com/mca-trainee-jobs-in-mumbai-(bombay),Naukri,1,MCA,Fresher,False,35,4
+real_mock_166,B.Tech Graduate,IBM,"Navi Mumbai, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,28,7
+real_mock_167,HR Manager,Teleperformance,"Noida, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,8,6
+real_mock_168,Product Manager,Kochar Infotech,"Gurgaon, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Gurgaon,LinkedIn,1,General,Experienced,False,14,5
+real_mock_169,DevOps Engineer,Aegis,"Gurugram, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-gurugram,Naukri,1,"MCA, BTECH, BCA",Experienced,False,8,7
+real_mock_170,Software Engineer,Aye Finance,"Bangalore, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,42,4
+real_mock_171,Data Analyst,JP Morgan,"Chennai, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,30,4
+real_mock_172,Consultant,Nestle,"Jalpaiguri, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Jalpaiguri,LinkedIn,1,General,Experienced,False,28,4
+real_mock_173,Accountant,Swiggy,"Pune, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-pune,Naukri,1,General,Experienced,False,17,4
+real_mock_174,BCA Intern,Flipkart,"Hyderabad, India",Corporate,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,25,3
+real_mock_175,MCA Trainee,Capgemini,"Andhra Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,True,100,6
+real_mock_176,B.Tech Graduate,Cognizant,"Assam, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Assam,LinkedIn,1,BTECH,Fresher,True,95,8
+real_mock_177,HR Manager,Deloitte,"Bihar, India",Corporate,On-site,https://www.naukri.com/hr-manager-jobs-in-bihar,Naukri,1,NON-TECH,Experienced,True,98,18
+real_mock_178,Product Manager,Goldman Sachs,"Chhattisgarh, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,True,166,21
+real_mock_179,DevOps Engineer,KPMG,"Delhi, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,True,190,9
+real_mock_180,Software Engineer,PwC,"Goa, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Goa,LinkedIn,1,"MCA, BTECH, BCA",Experienced,True,55,12
+real_mock_181,Data Analyst,Accenture,"Gujarat, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-gujarat,Naukri,1,"BTECH, BSC, MSC",Experienced,True,67,13
+real_mock_182,Consultant,Oracle,"Haryana, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,True,127,20
+real_mock_183,Accountant,HDFC Bank,"Himachal Pradesh, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,22,6
+real_mock_184,BCA Intern,Coal India,"Jharkhand, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Jharkhand,LinkedIn,1,BCA,Fresher,False,6,5
+real_mock_185,MCA Trainee,TCS,"Karnataka, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-karnataka,Naukri,1,MCA,Fresher,False,41,5
+real_mock_186,B.Tech Graduate,Infosys,"Kerala, India",Corporate,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,44,3
+real_mock_187,HR Manager,Wipro,"Madhya Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,24,7
+real_mock_188,Product Manager,Reliance,"Maharashtra, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Maharashtra,LinkedIn,1,General,Experienced,False,14,5
+real_mock_189,DevOps Engineer,L&T Technology Services,"Meghalaya, India",Corporate,On-site,https://www.naukri.com/devops-engineer-jobs-in-meghalaya,Naukri,1,"MCA, BTECH, BCA",Experienced,False,15,4
+real_mock_190,Software Engineer,Tech Mahindra,"Odisha, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,40,5
+real_mock_191,Data Analyst,IBM,"Punjab, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,6,5
+real_mock_192,Consultant,Teleperformance,"Rajasthan, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Rajasthan,LinkedIn,1,General,Experienced,False,32,4
+real_mock_193,Accountant,Kochar Infotech,"Sikkim, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-sikkim,Naukri,1,General,Experienced,False,31,7
+real_mock_194,BCA Intern,Aegis,"Tamil Nadu, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,19,6
+real_mock_195,MCA Trainee,Aye Finance,"Telangana, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,28,3
+real_mock_196,B.Tech Graduate,JP Morgan,"Uttar Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Uttar%20Pradesh,LinkedIn,1,BTECH,Fresher,False,42,6
+real_mock_197,HR Manager,Nestle,"Uttarakhand, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-uttarakhand,Naukri,1,NON-TECH,Experienced,False,25,7
+real_mock_198,Product Manager,Swiggy,"West Bengal, India",Corporate,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,15,6
+real_mock_199,DevOps Engineer,Flipkart,"Tripura, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,10,3
+real_mock_200,Software Engineer,Capgemini,"Mumbai (Bombay), India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Mumbai%20(Bombay),LinkedIn,1,"MCA, BTECH, BCA",Experienced,True,193,15
+real_mock_201,Data Analyst,Cognizant,"Navi Mumbai, India",Corporate,On-site,https://www.naukri.com/data-analyst-jobs-in-navi-mumbai,Naukri,1,"BTECH, BSC, MSC",Experienced,True,146,16
+real_mock_202,Consultant,Deloitte,"Noida, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,True,193,12
+real_mock_203,Accountant,Goldman Sachs,"Gurgaon, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,True,164,17
+real_mock_204,BCA Intern,KPMG,"Gurugram, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Gurugram,LinkedIn,1,BCA,Fresher,True,62,13
+real_mock_205,MCA Trainee,PwC,"Bangalore, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-bangalore,Naukri,1,MCA,Fresher,True,51,15
+real_mock_206,B.Tech Graduate,Accenture,"Chennai, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,True,58,11
+real_mock_207,HR Manager,Oracle,"Jalpaiguri, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,True,177,20
+real_mock_208,Product Manager,HDFC Bank,"Pune, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Pune,LinkedIn,1,General,Experienced,False,17,6
+real_mock_209,DevOps Engineer,Coal India,"Hyderabad, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-hyderabad,Naukri,1,"MCA, BTECH, BCA",Experienced,False,12,7
+real_mock_210,Software Engineer,TCS,"Andhra Pradesh, India",Corporate,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,48,5
+real_mock_211,Data Analyst,Infosys,"Assam, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,12,6
+real_mock_212,Consultant,Wipro,"Bihar, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Bihar,LinkedIn,1,General,Experienced,False,14,3
+real_mock_213,Accountant,Reliance,"Chhattisgarh, India",Corporate,On-site,https://www.naukri.com/accountant-jobs-in-chhattisgarh,Naukri,1,General,Experienced,False,43,5
+real_mock_214,BCA Intern,L&T Technology Services,"Delhi, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,8,5
+real_mock_215,MCA Trainee,Tech Mahindra,"Goa, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,23,6
+real_mock_216,B.Tech Graduate,IBM,"Gujarat, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Gujarat,LinkedIn,1,BTECH,Fresher,False,13,4
+real_mock_217,HR Manager,Teleperformance,"Haryana, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-haryana,Naukri,1,NON-TECH,Experienced,False,15,3
+real_mock_218,Product Manager,Kochar Infotech,"Himachal Pradesh, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,19,4
+real_mock_219,DevOps Engineer,Aegis,"Jharkhand, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,24,4
+real_mock_220,Software Engineer,Aye Finance,"Karnataka, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Karnataka,LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,40,6
+real_mock_221,Data Analyst,JP Morgan,"Kerala, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-kerala,Naukri,1,"BTECH, BSC, MSC",Experienced,False,29,5
+real_mock_222,Consultant,Nestle,"Madhya Pradesh, India",Corporate,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,42,3
+real_mock_223,Accountant,Swiggy,"Maharashtra, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,18,3
+real_mock_224,BCA Intern,Flipkart,"Meghalaya, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Meghalaya,LinkedIn,1,BCA,Fresher,False,22,4
+real_mock_225,MCA Trainee,Capgemini,"Odisha, India",Corporate,On-site,https://www.naukri.com/mca-trainee-jobs-in-odisha,Naukri,1,MCA,Fresher,True,85,24
+real_mock_226,B.Tech Graduate,Cognizant,"Punjab, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,True,134,24
+real_mock_227,HR Manager,Deloitte,"Rajasthan, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,True,101,11
+real_mock_228,Product Manager,Goldman Sachs,"Sikkim, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Sikkim,LinkedIn,1,General,Experienced,True,54,20
+real_mock_229,DevOps Engineer,KPMG,"Tamil Nadu, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-tamil-nadu,Naukri,1,"MCA, BTECH, BCA",Experienced,True,77,6
+real_mock_230,Software Engineer,PwC,"Telangana, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,True,71,11
+real_mock_231,Data Analyst,Accenture,"Uttar Pradesh, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,True,182,19
+real_mock_232,Consultant,Oracle,"Uttarakhand, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Uttarakhand,LinkedIn,1,General,Experienced,True,70,9
+real_mock_233,Accountant,HDFC Bank,"West Bengal, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-west-bengal,Naukri,1,General,Experienced,False,31,4
+real_mock_234,BCA Intern,Coal India,"Tripura, India",Corporate,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,10,3
+real_mock_235,MCA Trainee,TCS,"Mumbai (Bombay), India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,30,4
+real_mock_236,B.Tech Graduate,Infosys,"Navi Mumbai, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Navi%20Mumbai,LinkedIn,1,BTECH,Fresher,False,31,4
+real_mock_237,HR Manager,Wipro,"Noida, India",Corporate,On-site,https://www.naukri.com/hr-manager-jobs-in-noida,Naukri,1,NON-TECH,Experienced,False,30,4
+real_mock_238,Product Manager,Reliance,"Gurgaon, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,45,7
+real_mock_239,DevOps Engineer,L&T Technology Services,"Gurugram, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,14,3
+real_mock_240,Software Engineer,Tech Mahindra,"Bangalore, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Bangalore,LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,39,4
+real_mock_241,Data Analyst,IBM,"Chennai, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-chennai,Naukri,1,"BTECH, BSC, MSC",Experienced,False,25,3
+real_mock_242,Consultant,Teleperformance,"Jalpaiguri, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,28,7
+real_mock_243,Accountant,Kochar Infotech,"Pune, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,42,7
+real_mock_244,BCA Intern,Aegis,"Hyderabad, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Hyderabad,LinkedIn,1,BCA,Fresher,False,23,7
+real_mock_245,MCA Trainee,Aye Finance,"Andhra Pradesh, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-andhra-pradesh,Naukri,1,MCA,Fresher,False,14,6
+real_mock_246,B.Tech Graduate,JP Morgan,"Assam, India",Corporate,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,22,3
+real_mock_247,HR Manager,Nestle,"Bihar, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,9,7
+real_mock_248,Product Manager,Swiggy,"Chhattisgarh, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Chhattisgarh,LinkedIn,1,General,Experienced,False,30,4
+real_mock_249,DevOps Engineer,Flipkart,"Delhi, India",Corporate,On-site,https://www.naukri.com/devops-engineer-jobs-in-delhi,Naukri,1,"MCA, BTECH, BCA",Experienced,False,34,6
+real_mock_250,Software Engineer,Capgemini,"Goa, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,True,72,19
+real_mock_251,Data Analyst,Cognizant,"Gujarat, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,True,182,21
+real_mock_252,Consultant,Deloitte,"Haryana, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Haryana,LinkedIn,1,General,Experienced,True,162,13
+real_mock_253,Accountant,Goldman Sachs,"Himachal Pradesh, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-himachal-pradesh,Naukri,1,General,Experienced,True,119,21
+real_mock_254,BCA Intern,KPMG,"Jharkhand, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,True,68,14
+real_mock_255,MCA Trainee,PwC,"Karnataka, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,True,184,10
+real_mock_256,B.Tech Graduate,Accenture,"Kerala, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Kerala,LinkedIn,1,BTECH,Fresher,True,169,11
+real_mock_257,HR Manager,Oracle,"Madhya Pradesh, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-madhya-pradesh,Naukri,1,NON-TECH,Experienced,True,171,14
+real_mock_258,Product Manager,HDFC Bank,"Maharashtra, India",Corporate,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,46,3
+real_mock_259,DevOps Engineer,Coal India,"Meghalaya, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,34,6
+real_mock_260,Software Engineer,TCS,"Odisha, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Odisha,LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,33,4
+real_mock_261,Data Analyst,Infosys,"Punjab, India",Corporate,On-site,https://www.naukri.com/data-analyst-jobs-in-punjab,Naukri,1,"BTECH, BSC, MSC",Experienced,False,37,7
+real_mock_262,Consultant,Wipro,"Rajasthan, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,22,6
+real_mock_263,Accountant,Reliance,"Sikkim, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,43,6
+real_mock_264,BCA Intern,L&T Technology Services,"Tamil Nadu, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Tamil%20Nadu,LinkedIn,1,BCA,Fresher,False,41,3
+real_mock_265,MCA Trainee,Tech Mahindra,"Telangana, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-telangana,Naukri,1,MCA,Fresher,False,9,4
+real_mock_266,B.Tech Graduate,IBM,"Uttar Pradesh, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,42,4
+real_mock_267,HR Manager,Teleperformance,"Uttarakhand, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,12,3
+real_mock_268,Product Manager,Kochar Infotech,"West Bengal, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=West%20Bengal,LinkedIn,1,General,Experienced,False,12,4
+real_mock_269,DevOps Engineer,Aegis,"Tripura, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-tripura,Naukri,1,"MCA, BTECH, BCA",Experienced,False,16,5
+real_mock_270,Software Engineer,Aye Finance,"Mumbai (Bombay), India",Corporate,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,22,5
+real_mock_271,Data Analyst,JP Morgan,"Navi Mumbai, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,48,3
+real_mock_272,Consultant,Nestle,"Noida, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Noida,LinkedIn,1,General,Experienced,False,9,3
+real_mock_273,Accountant,Swiggy,"Gurgaon, India",Corporate,On-site,https://www.naukri.com/accountant-jobs-in-gurgaon,Naukri,1,General,Experienced,False,49,4
+real_mock_274,BCA Intern,Flipkart,"Gurugram, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,44,5
+real_mock_275,MCA Trainee,Capgemini,"Bangalore, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,True,107,17
+real_mock_276,B.Tech Graduate,Cognizant,"Chennai, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Chennai,LinkedIn,1,BTECH,Fresher,True,193,22
+real_mock_277,HR Manager,Deloitte,"Jalpaiguri, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-jalpaiguri,Naukri,1,NON-TECH,Experienced,True,132,18
+real_mock_278,Product Manager,Goldman Sachs,"Pune, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,True,182,18
+real_mock_279,DevOps Engineer,KPMG,"Hyderabad, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,True,174,8
+real_mock_280,Software Engineer,PwC,"Andhra Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Andhra%20Pradesh,LinkedIn,1,"MCA, BTECH, BCA",Experienced,True,198,7
+real_mock_281,Data Analyst,Accenture,"Assam, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-assam,Naukri,1,"BTECH, BSC, MSC",Experienced,True,77,15
+real_mock_282,Consultant,Oracle,"Bihar, India",Corporate,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,True,167,11
+real_mock_283,Accountant,HDFC Bank,"Chhattisgarh, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,14,5
+real_mock_284,BCA Intern,Coal India,"Delhi, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Delhi,LinkedIn,1,BCA,Fresher,False,42,6
+real_mock_285,MCA Trainee,TCS,"Goa, India",Corporate,On-site,https://www.naukri.com/mca-trainee-jobs-in-goa,Naukri,1,MCA,Fresher,False,27,5
+real_mock_286,B.Tech Graduate,Infosys,"Gujarat, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,35,7
+real_mock_287,HR Manager,Wipro,"Haryana, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,24,4
+real_mock_288,Product Manager,Reliance,"Himachal Pradesh, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Himachal%20Pradesh,LinkedIn,1,General,Experienced,False,16,7
+real_mock_289,DevOps Engineer,L&T Technology Services,"Jharkhand, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-jharkhand,Naukri,1,"MCA, BTECH, BCA",Experienced,False,48,5
+real_mock_290,Software Engineer,Tech Mahindra,"Karnataka, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,24,7
+real_mock_291,Data Analyst,IBM,"Kerala, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,18,5
+real_mock_292,Consultant,Teleperformance,"Madhya Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Madhya%20Pradesh,LinkedIn,1,General,Experienced,False,7,7
+real_mock_293,Accountant,Kochar Infotech,"Maharashtra, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-maharashtra,Naukri,1,General,Experienced,False,46,4
+real_mock_294,BCA Intern,Aegis,"Meghalaya, India",Corporate,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,8,3
+real_mock_295,MCA Trainee,Aye Finance,"Odisha, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,48,6
+real_mock_296,B.Tech Graduate,JP Morgan,"Punjab, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Punjab,LinkedIn,1,BTECH,Fresher,False,40,7
+real_mock_297,HR Manager,Nestle,"Rajasthan, India",Corporate,On-site,https://www.naukri.com/hr-manager-jobs-in-rajasthan,Naukri,1,NON-TECH,Experienced,False,7,5
+real_mock_298,Product Manager,Swiggy,"Sikkim, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,38,4
+real_mock_299,DevOps Engineer,Flipkart,"Tamil Nadu, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,31,6
+real_mock_300,Software Engineer,Capgemini,"Telangana, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Telangana,LinkedIn,1,"MCA, BTECH, BCA",Experienced,True,73,6
+real_mock_301,Data Analyst,Cognizant,"Uttar Pradesh, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-uttar-pradesh,Naukri,1,"BTECH, BSC, MSC",Experienced,True,175,13
+real_mock_302,Consultant,Deloitte,"Uttarakhand, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,True,107,14
+real_mock_303,Accountant,Goldman Sachs,"West Bengal, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,True,146,23
+real_mock_304,BCA Intern,KPMG,"Tripura, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Tripura,LinkedIn,1,BCA,Fresher,True,76,12
+real_mock_305,MCA Trainee,PwC,"Mumbai (Bombay), India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-mumbai-(bombay),Naukri,1,MCA,Fresher,True,169,9
+real_mock_306,B.Tech Graduate,Accenture,"Navi Mumbai, India",Corporate,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,True,172,17
+real_mock_307,HR Manager,Oracle,"Noida, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,True,84,20
+real_mock_308,Product Manager,HDFC Bank,"Gurgaon, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Gurgaon,LinkedIn,1,General,Experienced,False,31,3
+real_mock_309,DevOps Engineer,Coal India,"Gurugram, India",Corporate,On-site,https://www.naukri.com/devops-engineer-jobs-in-gurugram,Naukri,1,"MCA, BTECH, BCA",Experienced,False,46,6
+real_mock_310,Software Engineer,TCS,"Bangalore, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,15,4
+real_mock_311,Data Analyst,Infosys,"Chennai, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,38,5
+real_mock_312,Consultant,Wipro,"Jalpaiguri, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Jalpaiguri,LinkedIn,1,General,Experienced,False,11,6
+real_mock_313,Accountant,Reliance,"Pune, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-pune,Naukri,1,General,Experienced,False,18,3
+real_mock_314,BCA Intern,L&T Technology Services,"Hyderabad, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,16,6
+real_mock_315,MCA Trainee,Tech Mahindra,"Andhra Pradesh, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,31,4
+real_mock_316,B.Tech Graduate,IBM,"Assam, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Assam,LinkedIn,1,BTECH,Fresher,False,5,3
+real_mock_317,HR Manager,Teleperformance,"Bihar, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-bihar,Naukri,1,NON-TECH,Experienced,False,43,5
+real_mock_318,Product Manager,Kochar Infotech,"Chhattisgarh, India",Corporate,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,6,6
+real_mock_319,DevOps Engineer,Aegis,"Delhi, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,45,4
+real_mock_320,Software Engineer,Aye Finance,"Goa, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Goa,LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,48,5
+real_mock_321,Data Analyst,JP Morgan,"Gujarat, India",Corporate,On-site,https://www.naukri.com/data-analyst-jobs-in-gujarat,Naukri,1,"BTECH, BSC, MSC",Experienced,False,47,4
+real_mock_322,Consultant,Nestle,"Haryana, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,38,3
+real_mock_323,Accountant,Swiggy,"Himachal Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,35,5
+real_mock_324,BCA Intern,Flipkart,"Jharkhand, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Jharkhand,LinkedIn,1,BCA,Fresher,False,46,7
+real_mock_325,MCA Trainee,Capgemini,"Karnataka, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-karnataka,Naukri,1,MCA,Fresher,True,73,7
+real_mock_326,B.Tech Graduate,Cognizant,"Kerala, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,True,81,18
+real_mock_327,HR Manager,Deloitte,"Madhya Pradesh, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,True,99,7
+real_mock_328,Product Manager,Goldman Sachs,"Maharashtra, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Maharashtra,LinkedIn,1,General,Experienced,True,178,15
+real_mock_329,DevOps Engineer,KPMG,"Meghalaya, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-meghalaya,Naukri,1,"MCA, BTECH, BCA",Experienced,True,171,22
+real_mock_330,Software Engineer,PwC,"Odisha, India",Corporate,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,True,159,10
+real_mock_331,Data Analyst,Accenture,"Punjab, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,True,116,7
+real_mock_332,Consultant,Oracle,"Rajasthan, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Rajasthan,LinkedIn,1,General,Experienced,True,58,13
+real_mock_333,Accountant,HDFC Bank,"Sikkim, India",Corporate,On-site,https://www.naukri.com/accountant-jobs-in-sikkim,Naukri,1,General,Experienced,False,24,6
+real_mock_334,BCA Intern,Coal India,"Tamil Nadu, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,38,4
+real_mock_335,MCA Trainee,TCS,"Telangana, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,42,7
+real_mock_336,B.Tech Graduate,Infosys,"Uttar Pradesh, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Uttar%20Pradesh,LinkedIn,1,BTECH,Fresher,False,23,7
+real_mock_337,HR Manager,Wipro,"Uttarakhand, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-uttarakhand,Naukri,1,NON-TECH,Experienced,False,37,3
+real_mock_338,Product Manager,Reliance,"West Bengal, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,33,5
+real_mock_339,DevOps Engineer,L&T Technology Services,"Tripura, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,49,4
+real_mock_340,Software Engineer,Tech Mahindra,"Mumbai (Bombay), India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Mumbai%20(Bombay),LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,49,4
+real_mock_341,Data Analyst,IBM,"Navi Mumbai, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-navi-mumbai,Naukri,1,"BTECH, BSC, MSC",Experienced,False,14,7
+real_mock_342,Consultant,Teleperformance,"Noida, India",Corporate,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,33,4
+real_mock_343,Accountant,Kochar Infotech,"Gurgaon, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,29,5
+real_mock_344,BCA Intern,Aegis,"Gurugram, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Gurugram,LinkedIn,1,BCA,Fresher,False,39,7
+real_mock_345,MCA Trainee,Aye Finance,"Bangalore, India",Corporate,On-site,https://www.naukri.com/mca-trainee-jobs-in-bangalore,Naukri,1,MCA,Fresher,False,17,7
+real_mock_346,B.Tech Graduate,JP Morgan,"Chennai, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,35,5
+real_mock_347,HR Manager,Nestle,"Jalpaiguri, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,25,3
+real_mock_348,Product Manager,Swiggy,"Pune, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Pune,LinkedIn,1,General,Experienced,False,27,6
+real_mock_349,DevOps Engineer,Flipkart,"Hyderabad, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-hyderabad,Naukri,1,"MCA, BTECH, BCA",Experienced,False,32,4
+real_mock_350,Software Engineer,Capgemini,"Andhra Pradesh, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,True,84,18
+real_mock_351,Data Analyst,Cognizant,"Assam, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,True,142,19
+real_mock_352,Consultant,Deloitte,"Bihar, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Bihar,LinkedIn,1,General,Experienced,True,123,20
+real_mock_353,Accountant,Goldman Sachs,"Chhattisgarh, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-chhattisgarh,Naukri,1,General,Experienced,True,54,15
+real_mock_354,BCA Intern,KPMG,"Delhi, India",Corporate,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,True,118,7
+real_mock_355,MCA Trainee,PwC,"Goa, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,True,197,9
+real_mock_356,B.Tech Graduate,Accenture,"Gujarat, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Gujarat,LinkedIn,1,BTECH,Fresher,True,91,18
+real_mock_357,HR Manager,Oracle,"Haryana, India",Corporate,On-site,https://www.naukri.com/hr-manager-jobs-in-haryana,Naukri,1,NON-TECH,Experienced,True,72,13
+real_mock_358,Product Manager,HDFC Bank,"Himachal Pradesh, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,19,6
+real_mock_359,DevOps Engineer,Coal India,"Jharkhand, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,45,7
+real_mock_360,Software Engineer,TCS,"Karnataka, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Karnataka,LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,46,3
+real_mock_361,Data Analyst,Infosys,"Kerala, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-kerala,Naukri,1,"BTECH, BSC, MSC",Experienced,False,37,3
+real_mock_362,Consultant,Wipro,"Madhya Pradesh, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,35,3
+real_mock_363,Accountant,Reliance,"Maharashtra, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,47,4
+real_mock_364,BCA Intern,L&T Technology Services,"Meghalaya, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Meghalaya,LinkedIn,1,BCA,Fresher,False,37,3
+real_mock_365,MCA Trainee,Tech Mahindra,"Odisha, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-odisha,Naukri,1,MCA,Fresher,False,14,6
+real_mock_366,B.Tech Graduate,IBM,"Punjab, India",Corporate,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,7,6
+real_mock_367,HR Manager,Teleperformance,"Rajasthan, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,40,4
+real_mock_368,Product Manager,Kochar Infotech,"Sikkim, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Sikkim,LinkedIn,1,General,Experienced,False,10,3
+real_mock_369,DevOps Engineer,Aegis,"Tamil Nadu, India",Corporate,On-site,https://www.naukri.com/devops-engineer-jobs-in-tamil-nadu,Naukri,1,"MCA, BTECH, BCA",Experienced,False,31,7
+real_mock_370,Software Engineer,Aye Finance,"Telangana, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,39,6
+real_mock_371,Data Analyst,JP Morgan,"Uttar Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,29,6
+real_mock_372,Consultant,Nestle,"Uttarakhand, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Uttarakhand,LinkedIn,1,General,Experienced,False,8,7
+real_mock_373,Accountant,Swiggy,"West Bengal, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-west-bengal,Naukri,1,General,Experienced,False,20,4
+real_mock_374,BCA Intern,Flipkart,"Tripura, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,15,7
+real_mock_375,MCA Trainee,Capgemini,"Mumbai (Bombay), India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,True,93,10
+real_mock_376,B.Tech Graduate,Cognizant,"Navi Mumbai, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Navi%20Mumbai,LinkedIn,1,BTECH,Fresher,True,59,23
+real_mock_377,HR Manager,Deloitte,"Noida, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-noida,Naukri,1,NON-TECH,Experienced,True,75,7
+real_mock_378,Product Manager,Goldman Sachs,"Gurgaon, India",Corporate,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,True,185,14
+real_mock_379,DevOps Engineer,KPMG,"Gurugram, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,True,110,6
+real_mock_380,Software Engineer,PwC,"Bangalore, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Bangalore,LinkedIn,1,"MCA, BTECH, BCA",Experienced,True,96,24
+real_mock_381,Data Analyst,Accenture,"Chennai, India",Corporate,On-site,https://www.naukri.com/data-analyst-jobs-in-chennai,Naukri,1,"BTECH, BSC, MSC",Experienced,True,63,20
+real_mock_382,Consultant,Oracle,"Jalpaiguri, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,True,75,24
+real_mock_383,Accountant,HDFC Bank,"Pune, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,22,5
+real_mock_384,BCA Intern,Coal India,"Hyderabad, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Hyderabad,LinkedIn,1,BCA,Fresher,False,40,3
+real_mock_385,MCA Trainee,TCS,"Andhra Pradesh, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-andhra-pradesh,Naukri,1,MCA,Fresher,False,26,6
+real_mock_386,B.Tech Graduate,Infosys,"Assam, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,15,3
+real_mock_387,HR Manager,Wipro,"Bihar, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,12,7
+real_mock_388,Product Manager,Reliance,"Chhattisgarh, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Chhattisgarh,LinkedIn,1,General,Experienced,False,16,6
+real_mock_389,DevOps Engineer,L&T Technology Services,"Delhi, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-delhi,Naukri,1,"MCA, BTECH, BCA",Experienced,False,17,7
+real_mock_390,Software Engineer,Tech Mahindra,"Goa, India",Corporate,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,20,3
+real_mock_391,Data Analyst,IBM,"Gujarat, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,35,7
+real_mock_392,Consultant,Teleperformance,"Haryana, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Haryana,LinkedIn,1,General,Experienced,False,33,6
+real_mock_393,Accountant,Kochar Infotech,"Himachal Pradesh, India",Corporate,On-site,https://www.naukri.com/accountant-jobs-in-himachal-pradesh,Naukri,1,General,Experienced,False,27,4
+real_mock_394,BCA Intern,Aegis,"Jharkhand, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,48,4
+real_mock_395,MCA Trainee,Aye Finance,"Karnataka, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,10,4
+real_mock_396,B.Tech Graduate,JP Morgan,"Kerala, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Kerala,LinkedIn,1,BTECH,Fresher,False,45,3
+real_mock_397,HR Manager,Nestle,"Madhya Pradesh, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-madhya-pradesh,Naukri,1,NON-TECH,Experienced,False,5,6
+real_mock_398,Product Manager,Swiggy,"Maharashtra, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,27,6
+real_mock_399,DevOps Engineer,Flipkart,"Meghalaya, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,30,4
+real_mock_400,Software Engineer,Capgemini,"Odisha, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Odisha,LinkedIn,1,"MCA, BTECH, BCA",Experienced,True,60,7
+real_mock_401,Data Analyst,Cognizant,"Punjab, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-punjab,Naukri,1,"BTECH, BSC, MSC",Experienced,True,62,23
+real_mock_402,Consultant,Deloitte,"Rajasthan, India",Corporate,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,True,147,13
+real_mock_403,Accountant,Goldman Sachs,"Sikkim, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,True,158,23
+real_mock_404,BCA Intern,KPMG,"Tamil Nadu, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Tamil%20Nadu,LinkedIn,1,BCA,Fresher,True,115,21
+real_mock_405,MCA Trainee,PwC,"Telangana, India",Corporate,On-site,https://www.naukri.com/mca-trainee-jobs-in-telangana,Naukri,1,MCA,Fresher,True,110,8
+real_mock_406,B.Tech Graduate,Accenture,"Uttar Pradesh, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,True,151,24
+real_mock_407,HR Manager,Oracle,"Uttarakhand, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,True,111,15
+real_mock_408,Product Manager,HDFC Bank,"West Bengal, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=West%20Bengal,LinkedIn,1,General,Experienced,False,27,7
+real_mock_409,DevOps Engineer,Coal India,"Tripura, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-tripura,Naukri,1,"MCA, BTECH, BCA",Experienced,False,17,7
+real_mock_410,Software Engineer,TCS,"Mumbai (Bombay), India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,12,6
+real_mock_411,Data Analyst,Infosys,"Navi Mumbai, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,29,7
+real_mock_412,Consultant,Wipro,"Noida, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Noida,LinkedIn,1,General,Experienced,False,43,5
+real_mock_413,Accountant,Reliance,"Gurgaon, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-gurgaon,Naukri,1,General,Experienced,False,23,7
+real_mock_414,BCA Intern,L&T Technology Services,"Gurugram, India",Corporate,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,22,5
+real_mock_415,MCA Trainee,Tech Mahindra,"Bangalore, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,44,7
+real_mock_416,B.Tech Graduate,IBM,"Chennai, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Chennai,LinkedIn,1,BTECH,Fresher,False,40,3
+real_mock_417,HR Manager,Teleperformance,"Jalpaiguri, India",Corporate,On-site,https://www.naukri.com/hr-manager-jobs-in-jalpaiguri,Naukri,1,NON-TECH,Experienced,False,44,5
+real_mock_418,Product Manager,Kochar Infotech,"Pune, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,18,5
+real_mock_419,DevOps Engineer,Aegis,"Hyderabad, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,22,5
+real_mock_420,Software Engineer,Aye Finance,"Andhra Pradesh, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Andhra%20Pradesh,LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,33,3
+real_mock_421,Data Analyst,JP Morgan,"Assam, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-assam,Naukri,1,"BTECH, BSC, MSC",Experienced,False,12,7
+real_mock_422,Consultant,Nestle,"Bihar, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,21,4
+real_mock_423,Accountant,Swiggy,"Chhattisgarh, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,21,4
+real_mock_424,BCA Intern,Flipkart,"Delhi, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Delhi,LinkedIn,1,BCA,Fresher,False,13,6
+real_mock_425,MCA Trainee,Capgemini,"Goa, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-goa,Naukri,1,MCA,Fresher,True,119,16
+real_mock_426,B.Tech Graduate,Cognizant,"Gujarat, India",Corporate,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,True,193,13
+real_mock_427,HR Manager,Deloitte,"Haryana, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,True,90,12
+real_mock_428,Product Manager,Goldman Sachs,"Himachal Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Himachal%20Pradesh,LinkedIn,1,General,Experienced,True,86,11
+real_mock_429,DevOps Engineer,KPMG,"Jharkhand, India",Corporate,On-site,https://www.naukri.com/devops-engineer-jobs-in-jharkhand,Naukri,1,"MCA, BTECH, BCA",Experienced,True,197,20
+real_mock_430,Software Engineer,PwC,"Karnataka, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,True,158,18
+real_mock_431,Data Analyst,Accenture,"Kerala, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,True,104,16
+real_mock_432,Consultant,Oracle,"Madhya Pradesh, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Madhya%20Pradesh,LinkedIn,1,General,Experienced,True,174,18
+real_mock_433,Accountant,HDFC Bank,"Maharashtra, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-maharashtra,Naukri,1,General,Experienced,False,7,7
+real_mock_434,BCA Intern,Coal India,"Meghalaya, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,19,5
+real_mock_435,MCA Trainee,TCS,"Odisha, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,22,5
+real_mock_436,B.Tech Graduate,Infosys,"Punjab, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Punjab,LinkedIn,1,BTECH,Fresher,False,22,4
+real_mock_437,HR Manager,Wipro,"Rajasthan, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-rajasthan,Naukri,1,NON-TECH,Experienced,False,32,7
+real_mock_438,Product Manager,Reliance,"Sikkim, India",Corporate,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,21,7
+real_mock_439,DevOps Engineer,L&T Technology Services,"Tamil Nadu, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,24,6
+real_mock_440,Software Engineer,Tech Mahindra,"Telangana, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Telangana,LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,15,3
+real_mock_441,Data Analyst,IBM,"Uttar Pradesh, India",Corporate,On-site,https://www.naukri.com/data-analyst-jobs-in-uttar-pradesh,Naukri,1,"BTECH, BSC, MSC",Experienced,False,35,3
+real_mock_442,Consultant,Teleperformance,"Uttarakhand, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,15,6
+real_mock_443,Accountant,Kochar Infotech,"West Bengal, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,9,5
+real_mock_444,BCA Intern,Aegis,"Tripura, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Tripura,LinkedIn,1,BCA,Fresher,False,48,7
+real_mock_445,MCA Trainee,Aye Finance,"Mumbai (Bombay), India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-mumbai-(bombay),Naukri,1,MCA,Fresher,False,5,5
+real_mock_446,B.Tech Graduate,JP Morgan,"Navi Mumbai, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,22,6
+real_mock_447,HR Manager,Nestle,"Noida, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,40,3
+real_mock_448,Product Manager,Swiggy,"Gurgaon, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Gurgaon,LinkedIn,1,General,Experienced,False,24,5
+real_mock_449,DevOps Engineer,Flipkart,"Gurugram, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-gurugram,Naukri,1,"MCA, BTECH, BCA",Experienced,False,28,6
+real_mock_450,Software Engineer,Capgemini,"Bangalore, India",Corporate,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,True,56,23
+real_mock_451,Data Analyst,Cognizant,"Chennai, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,True,54,8
+real_mock_452,Consultant,Deloitte,"Jalpaiguri, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Jalpaiguri,LinkedIn,1,General,Experienced,True,103,13
+real_mock_453,Accountant,Goldman Sachs,"Pune, India",Corporate,On-site,https://www.naukri.com/accountant-jobs-in-pune,Naukri,1,General,Experienced,True,90,20
+real_mock_454,BCA Intern,KPMG,"Hyderabad, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,True,115,12
+real_mock_455,MCA Trainee,PwC,"Andhra Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,True,178,17
+real_mock_456,B.Tech Graduate,Accenture,"Assam, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Assam,LinkedIn,1,BTECH,Fresher,True,96,24
+real_mock_457,HR Manager,Oracle,"Bihar, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-bihar,Naukri,1,NON-TECH,Experienced,True,153,9
+real_mock_458,Product Manager,HDFC Bank,"Chhattisgarh, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,32,6
+real_mock_459,DevOps Engineer,Coal India,"Delhi, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,12,6
+real_mock_460,Software Engineer,TCS,"Goa, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Goa,LinkedIn,1,"MCA, BTECH, BCA",Experienced,False,38,6
+real_mock_461,Data Analyst,Infosys,"Gujarat, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-gujarat,Naukri,1,"BTECH, BSC, MSC",Experienced,False,26,4
+real_mock_462,Consultant,Wipro,"Haryana, India",Corporate,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,False,6,5
+real_mock_463,Accountant,Reliance,"Himachal Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,19,6
+real_mock_464,BCA Intern,L&T Technology Services,"Jharkhand, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Jharkhand,LinkedIn,1,BCA,Fresher,False,40,6
+real_mock_465,MCA Trainee,Tech Mahindra,"Karnataka, India",Corporate,On-site,https://www.naukri.com/mca-trainee-jobs-in-karnataka,Naukri,1,MCA,Fresher,False,41,3
+real_mock_466,B.Tech Graduate,IBM,"Kerala, India",Technology,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,32,4
+real_mock_467,HR Manager,Teleperformance,"Madhya Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,28,4
+real_mock_468,Product Manager,Kochar Infotech,"Maharashtra, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Maharashtra,LinkedIn,1,General,Experienced,False,10,4
+real_mock_469,DevOps Engineer,Aegis,"Meghalaya, India",Technology,On-site,https://www.naukri.com/devops-engineer-jobs-in-meghalaya,Naukri,1,"MCA, BTECH, BCA",Experienced,False,34,7
+real_mock_470,Software Engineer,Aye Finance,"Odisha, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,49,4
+real_mock_471,Data Analyst,JP Morgan,"Punjab, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,7,4
+real_mock_472,Consultant,Nestle,"Rajasthan, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Rajasthan,LinkedIn,1,General,Experienced,False,48,3
+real_mock_473,Accountant,Swiggy,"Sikkim, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-sikkim,Naukri,1,General,Experienced,False,37,7
+real_mock_474,BCA Intern,Flipkart,"Tamil Nadu, India",Corporate,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,47,7
+real_mock_475,MCA Trainee,Capgemini,"Telangana, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,True,179,13
+real_mock_476,B.Tech Graduate,Cognizant,"Uttar Pradesh, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Uttar%20Pradesh,LinkedIn,1,BTECH,Fresher,True,65,21
+real_mock_477,HR Manager,Deloitte,"Uttarakhand, India",Corporate,On-site,https://www.naukri.com/hr-manager-jobs-in-uttarakhand,Naukri,1,NON-TECH,Experienced,True,126,21
+real_mock_478,Product Manager,Goldman Sachs,"West Bengal, India",Technology,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,True,193,6
+real_mock_479,DevOps Engineer,KPMG,"Tripura, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,True,84,19
+real_mock_480,Software Engineer,PwC,"Mumbai (Bombay), India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=Mumbai%20(Bombay),LinkedIn,1,"MCA, BTECH, BCA",Experienced,True,56,7
+real_mock_481,Data Analyst,Accenture,"Navi Mumbai, India",Technology,On-site,https://www.naukri.com/data-analyst-jobs-in-navi-mumbai,Naukri,1,"BTECH, BSC, MSC",Experienced,True,118,12
+real_mock_482,Consultant,Oracle,"Noida, India",Technology,On-site,https://unstop.com/jobs?query=Consultant,Unstop,1,General,Experienced,True,147,17
+real_mock_483,Accountant,HDFC Bank,"Gurgaon, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,General,Experienced,False,25,7
+real_mock_484,BCA Intern,Coal India,"Gurugram, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=BCA%20Intern&location=Gurugram,LinkedIn,1,BCA,Fresher,False,41,4
+real_mock_485,MCA Trainee,TCS,"Bangalore, India",Technology,On-site,https://www.naukri.com/mca-trainee-jobs-in-bangalore,Naukri,1,MCA,Fresher,False,32,6
+real_mock_486,B.Tech Graduate,Infosys,"Chennai, India",Corporate,On-site,https://unstop.com/jobs?query=B.Tech+Graduate,Unstop,1,BTECH,Fresher,False,7,5
+real_mock_487,HR Manager,Wipro,"Jalpaiguri, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,NON-TECH,Experienced,False,48,5
+real_mock_488,Product Manager,Reliance,"Pune, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=Product%20Manager&location=Pune,LinkedIn,1,General,Experienced,False,22,7
+real_mock_489,DevOps Engineer,L&T Technology Services,"Hyderabad, India",Corporate,On-site,https://www.naukri.com/devops-engineer-jobs-in-hyderabad,Naukri,1,"MCA, BTECH, BCA",Experienced,False,42,7
+real_mock_490,Software Engineer,Tech Mahindra,"Andhra Pradesh, India",Technology,On-site,https://unstop.com/jobs?query=Software+Engineer,Unstop,1,"MCA, BTECH, BCA",Experienced,False,14,3
+real_mock_491,Data Analyst,IBM,"Assam, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"BTECH, BSC, MSC",Experienced,False,40,7
+real_mock_492,Consultant,Teleperformance,"Bihar, India",Corporate,On-site,https://www.linkedin.com/jobs/search/?keywords=Consultant&location=Bihar,LinkedIn,1,General,Experienced,False,22,3
+real_mock_493,Accountant,Kochar Infotech,"Chhattisgarh, India",Technology,On-site,https://www.naukri.com/accountant-jobs-in-chhattisgarh,Naukri,1,General,Experienced,False,12,3
+real_mock_494,BCA Intern,Aegis,"Delhi, India",Technology,On-site,https://unstop.com/jobs?query=BCA+Intern,Unstop,1,BCA,Fresher,False,41,4
+real_mock_495,MCA Trainee,Aye Finance,"Goa, India",Corporate,On-site,https://www.linkedin.com/jobs,Direct MNC,1,MCA,Fresher,False,38,6
+real_mock_496,B.Tech Graduate,JP Morgan,"Gujarat, India",Technology,On-site,https://www.linkedin.com/jobs/search/?keywords=B.Tech%20Graduate&location=Gujarat,LinkedIn,1,BTECH,Fresher,False,18,7
+real_mock_497,HR Manager,Nestle,"Haryana, India",Technology,On-site,https://www.naukri.com/hr-manager-jobs-in-haryana,Naukri,1,NON-TECH,Experienced,False,32,6
+real_mock_498,Product Manager,Swiggy,"Himachal Pradesh, India",Corporate,On-site,https://unstop.com/jobs?query=Product+Manager,Unstop,1,General,Experienced,False,34,7
+real_mock_499,DevOps Engineer,Flipkart,"Jharkhand, India",Technology,On-site,https://www.linkedin.com/jobs,Direct MNC,1,"MCA, BTECH, BCA",Experienced,False,36,5
