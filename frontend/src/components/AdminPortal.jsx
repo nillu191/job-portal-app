@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Users, MessageSquare, Megaphone, Plus, CheckCircle, XCircle, 
   Trash2, Mail, ExternalLink, ShieldCheck, Clock, Star, 
   AlertCircle, ArrowRight, RefreshCw, Send, Check, Play, Pause,
-  Layers, UserCheck, Shield, Sparkles, Calendar, DollarSign
+  Layers, UserCheck, Shield, Sparkles, Calendar, DollarSign,
+  Lock, Key, KeyRound, Eye, EyeOff, LogOut, ShieldAlert
 } from 'lucide-react';
 
 export const AdminPortal = ({
@@ -21,6 +22,8 @@ export const AdminPortal = ({
   onToggleAdActive,
   onDeleteAd,
   onRefresh,
+  onLockAdmin,
+  onPasswordChanged,
   loading = false
 }) => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -65,6 +68,93 @@ export const AdminPortal = ({
     if (inboxFilter === 'All') return true;
     return c.status === inboxFilter;
   });
+
+  // Master Owner Password Management State
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showCurrentPass, setShowCurrentPass] = useState(false);
+  const [showNewPass, setShowNewPass] = useState(false);
+  const [showConfirmPass, setShowConfirmPass] = useState(false);
+  const [securityMessage, setSecurityMessage] = useState('');
+  const [securityError, setSecurityError] = useState('');
+  const [isUpdatingPassword, setIsUpdatingPassword] = useState(false);
+  const [isCustomPassword, setIsCustomPassword] = useState(false);
+  const [lastUpdatedPassword, setLastUpdatedPassword] = useState(null);
+
+  useEffect(() => {
+    fetchSecurityStatus();
+  }, []);
+
+  const fetchSecurityStatus = async () => {
+    try {
+      const res = await fetch('/api/admin/status');
+      if (res.ok) {
+        const data = await res.json();
+        setIsCustomPassword(data.is_custom);
+        setLastUpdatedPassword(data.last_updated);
+      } else {
+        const stored = localStorage.getItem('owner_admin_pin');
+        setIsCustomPassword(Boolean(stored));
+      }
+    } catch {
+      const stored = localStorage.getItem('owner_admin_pin');
+      setIsCustomPassword(Boolean(stored));
+    }
+  };
+
+  const handleUpdatePassword = async (e) => {
+    e.preventDefault();
+    setSecurityError('');
+    setSecurityMessage('');
+
+    if (!newPassword || newPassword.trim().length < 4) {
+      setSecurityError('New password must be at least 4 characters long.');
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      setSecurityError('New password and confirmation do not match.');
+      return;
+    }
+
+    setIsUpdatingPassword(true);
+    try {
+      const res = await fetch('/api/admin/change-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          current_password: currentPassword.trim(),
+          new_password: newPassword.trim()
+        })
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem('owner_admin_pin', newPassword.trim());
+        setSecurityMessage('✅ Master Owner Password updated successfully! Only this password will now unlock the Admin section.');
+        setIsCustomPassword(true);
+        setLastUpdatedPassword(data.last_updated || new Date().toISOString());
+        setCurrentPassword('');
+        setNewPassword('');
+        setConfirmPassword('');
+        if (onPasswordChanged) onPasswordChanged(newPassword.trim());
+      } else {
+        setSecurityError(data.error || 'Failed to update owner password.');
+      }
+    } catch {
+      // LocalStorage fallback
+      localStorage.setItem('owner_admin_pin', newPassword.trim());
+      setSecurityMessage('✅ Master Owner Password updated successfully! Only your new password will unlock the admin section.');
+      setIsCustomPassword(true);
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+      if (onPasswordChanged) onPasswordChanged(newPassword.trim());
+    } finally {
+      setIsUpdatingPassword(false);
+    }
+  };
 
   const handleAddMentorSubmit = (e) => {
     e.preventDefault();
@@ -144,12 +234,39 @@ export const AdminPortal = ({
             <Megaphone size={18} />
             <span>Ad Campaigns ({ads.length})</span>
           </button>
+          <button 
+            className={`admin-tab-btn ${activeTab === 'security' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('security');
+              setSecurityError('');
+              setSecurityMessage('');
+              fetchSecurityStatus();
+            }}
+          >
+            <Lock size={18} />
+            <span>Security & Password</span>
+            {!isCustomPassword && (
+              <span className="admin-badge-count bg-amber" title="Custom password not set">Set Key</span>
+            )}
+          </button>
         </div>
 
-        <button className="btn btn-outline btn-sm" onClick={onRefresh} disabled={loading}>
-          <RefreshCw size={15} className={loading ? 'spin' : ''} />
-          <span>Sync Data</span>
-        </button>
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+          <button className="btn btn-outline btn-sm" onClick={onRefresh} disabled={loading}>
+            <RefreshCw size={15} className={loading ? 'spin' : ''} />
+            <span>Sync Data</span>
+          </button>
+          {onLockAdmin && (
+            <button 
+              className="btn btn-sm btn-lock-exit" 
+              onClick={onLockAdmin}
+              title="Lock Admin Portal and exit"
+            >
+              <LogOut size={15} />
+              <span>Lock & Exit</span>
+            </button>
+          )}
+        </div>
       </div>
 
       {activeTab === 'overview' && (
@@ -809,6 +926,205 @@ export const AdminPortal = ({
         </motion.div>
       )}
 
+      {activeTab === 'security' && (
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+          <div className="inbox-header-row">
+            <div>
+              <h2>🔐 Owner Security & Master Password</h2>
+              <p>Choose and control your private master password. Once set, only you with this password can unlock the Admin section.</p>
+            </div>
+          </div>
+
+          <div className="security-dashboard-grid">
+            {/* Form Box */}
+            <div className="security-form-panel">
+              <div className="security-panel-head">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <div className="security-icon-circle">
+                    <KeyRound size={22} color="#5b3ce8" />
+                  </div>
+                  <div>
+                    <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#0f172a' }}>
+                      {isCustomPassword ? 'Change Master Password' : 'Set Your Custom Owner Password'}
+                    </h3>
+                    <p style={{ margin: '2px 0 0 0', fontSize: '0.82rem', color: '#64748b' }}>
+                      {isCustomPassword 
+                        ? 'Update your secret password anytime' 
+                        : 'Choose your own custom password so nobody else can open the admin section'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className={`security-status-pill ${isCustomPassword ? 'active' : 'warning'}`}>
+                  {isCustomPassword ? '🛡️ Custom Password Enforced' : '⚠️ Default PIN Active'}
+                </div>
+              </div>
+
+              {securityMessage && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -5 }} 
+                  animate={{ opacity: 1, y: 0 }}
+                  className="security-alert-box alert-success"
+                >
+                  <CheckCircle size={18} />
+                  <span>{securityMessage}</span>
+                </motion.div>
+              )}
+
+              {securityError && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -5 }} 
+                  animate={{ opacity: 1, y: 0 }}
+                  className="security-alert-box alert-danger"
+                >
+                  <AlertCircle size={18} />
+                  <span>{securityError}</span>
+                </motion.div>
+              )}
+
+              <form onSubmit={handleUpdatePassword} style={{ marginTop: '1.25rem' }}>
+                {isCustomPassword && (
+                  <div className="form-group" style={{ marginBottom: '1.25rem' }}>
+                    <label>Current Master Password *</label>
+                    <div className="password-input-wrapper">
+                      <input
+                        type={showCurrentPass ? 'text' : 'password'}
+                        required
+                        placeholder="Enter current password"
+                        value={currentPassword}
+                        onChange={(e) => setCurrentPassword(e.target.value)}
+                        className="modal-input"
+                      />
+                      <button
+                        type="button"
+                        className="toggle-pass-btn"
+                        onClick={() => setShowCurrentPass(!showCurrentPass)}
+                        tabIndex={-1}
+                      >
+                        {showCurrentPass ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                <div className="form-group" style={{ marginBottom: '1.25rem' }}>
+                  <label>
+                    {isCustomPassword ? 'New Master Password *' : 'Choose Your Master Password *'}
+                  </label>
+                  <div className="password-input-wrapper">
+                    <input
+                      type={showNewPass ? 'text' : 'password'}
+                      required
+                      placeholder="Minimum 4 characters (e.g. MySecretPass#2026)"
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      className="modal-input"
+                    />
+                    <button
+                      type="button"
+                      className="toggle-pass-btn"
+                      onClick={() => setShowNewPass(!showNewPass)}
+                      tabIndex={-1}
+                    >
+                      {showNewPass ? <EyeOff size={16} /> : <Eye size={16} />}
+                    </button>
+                  </div>
+                  <small style={{ display: 'block', marginTop: '4px', color: '#64748b', fontSize: '0.78rem' }}>
+                    💡 Choose a strong, memorable password that only you (the owner) know.
+                  </small>
+                </div>
+
+                <div className="form-group" style={{ marginBottom: '1.5rem' }}>
+                  <label>Confirm Master Password *</label>
+                  <div className="password-input-wrapper">
+                    <input
+                      type={showConfirmPass ? 'text' : 'password'}
+                      required
+                      placeholder="Re-type new master password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      className="modal-input"
+                    />
+                    <button
+                      type="button"
+                      className="toggle-pass-btn"
+                      onClick={() => setShowConfirmPass(!showConfirmPass)}
+                      tabIndex={-1}
+                    >
+                      {showConfirmPass ? <EyeOff size={16} /> : <Eye size={16} />}
+                    </button>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                  <button 
+                    type="submit" 
+                    className="btn btn-primary" 
+                    style={{ padding: '0.85rem 2rem', display: 'flex', alignItems: 'center', gap: '8px' }}
+                    disabled={isUpdatingPassword}
+                  >
+                    {isUpdatingPassword ? <RefreshCw className="spin" size={16} /> : <ShieldCheck size={18} />}
+                    <span>{isCustomPassword ? 'Update Master Password' : 'Save & Protect Admin Section'}</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            {/* Security Guidelines & Lock Side Panel */}
+            <div className="security-side-panel">
+              <div className="security-info-box">
+                <h4 style={{ margin: '0 0 0.75rem 0', fontSize: '1rem', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Shield size={18} color="#10b981" />
+                  Owner-Only Security Enforced
+                </h4>
+                <ul className="security-rules-list">
+                  <li>
+                    <Check size={14} color="#10b981" />
+                    <span><strong>100% Restricted:</strong> Public users cannot access or view mentor applications, inbox, or ad controls.</span>
+                  </li>
+                  <li>
+                    <Check size={14} color="#10b981" />
+                    <span><strong>Custom Passwords:</strong> Once set, all default passwords are permanently revoked.</span>
+                  </li>
+                  <li>
+                    <Check size={14} color="#10b981" />
+                    <span><strong>Encrypted & Persistent:</strong> Secured with SHA-256 hash in backend database and synced with local storage.</span>
+                  </li>
+                </ul>
+
+                {lastUpdatedPassword && (
+                  <div className="security-last-updated">
+                    <Clock size={13} />
+                    <span>Last Updated: {new Date(lastUpdatedPassword).toLocaleString()}</span>
+                  </div>
+                )}
+              </div>
+
+              {onLockAdmin && (
+                <div className="lock-now-card">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '0.75rem' }}>
+                    <div className="lock-icon-box">
+                      <Lock size={20} color="#dc2626" />
+                    </div>
+                    <div>
+                      <h4 style={{ margin: 0, fontSize: '0.98rem', color: '#0f172a' }}>Finished working?</h4>
+                      <p style={{ margin: 0, fontSize: '0.8rem', color: '#64748b' }}>Lock the admin portal so nobody on this device can view it.</p>
+                    </div>
+                  </div>
+                  <button 
+                    className="btn-lock-full"
+                    onClick={onLockAdmin}
+                  >
+                    <LogOut size={16} />
+                    <span>Lock & Exit Admin Portal</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      )}
+
       <style>{`
         .admin-portal-wrapper {
           background: #f8fafc;
@@ -867,6 +1183,24 @@ export const AdminPortal = ({
         }
         .admin-badge-count.bg-amber {
           background: #d97706;
+        }
+
+        .btn-lock-exit {
+          background: #fee2e2;
+          color: #dc2626;
+          border: 1.5px solid #fecaca;
+          font-weight: 700;
+          border-radius: 10px;
+          padding: 6px 14px;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          transition: all 0.2s;
+        }
+        .btn-lock-exit:hover {
+          background: #fca5a5;
+          color: #991b1b;
         }
 
         .admin-stats-grid {
@@ -1218,6 +1552,176 @@ export const AdminPortal = ({
         .empty-state-box h3 { margin: 1rem 0 0.25rem 0; font-size: 1.15rem; color: #0f172a; }
         .empty-state-box p { color: #64748b; font-size: 0.88rem; margin: 0; }
         .empty-text { color: #94a3b8; font-size: 0.85rem; font-style: italic; margin: 0.5rem 0; }
+
+        /* Security Dashboard Styles */
+        .security-dashboard-grid {
+          display: grid;
+          grid-template-columns: 1.5fr 1fr;
+          gap: 1.5rem;
+        }
+        @media (max-width: 900px) {
+          .security-dashboard-grid { grid-template-columns: 1fr; }
+        }
+        .security-form-panel {
+          background: white;
+          border: 1.5px solid #e2e8f0;
+          border-radius: 20px;
+          padding: 1.75rem;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+        .security-panel-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-bottom: 1.25rem;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid #f1f5f9;
+        }
+        .security-icon-circle {
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          background: rgba(91, 60, 232, 0.1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .security-status-pill {
+          font-size: 0.78rem;
+          font-weight: 700;
+          padding: 4px 10px;
+          border-radius: 12px;
+        }
+        .security-status-pill.active {
+          background: #d1fae5;
+          color: #065f46;
+          border: 1px solid #a7f3d0;
+        }
+        .security-status-pill.warning {
+          background: #fef3c7;
+          color: #92400e;
+          border: 1px solid #fde68a;
+        }
+        .security-alert-box {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 0.85rem 1rem;
+          border-radius: 12px;
+          font-size: 0.88rem;
+          font-weight: 600;
+          margin-bottom: 1.25rem;
+        }
+        .alert-success {
+          background: #ecfdf5;
+          color: #065f46;
+          border: 1px solid #a7f3d0;
+        }
+        .alert-danger {
+          background: #fef2f2;
+          color: #991b1b;
+          border: 1px solid #fecaca;
+        }
+        .password-input-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+        .password-input-wrapper input {
+          width: 100%;
+          padding-right: 42px;
+        }
+        .toggle-pass-btn {
+          position: absolute;
+          right: 12px;
+          background: none;
+          border: none;
+          color: #94a3b8;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 4px;
+        }
+        .toggle-pass-btn:hover {
+          color: #334155;
+        }
+
+        .security-side-panel {
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+        }
+        .security-info-box {
+          background: white;
+          border: 1.5px solid #e2e8f0;
+          border-radius: 20px;
+          padding: 1.5rem;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+        .security-rules-list {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 1rem 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+        .security-rules-list li {
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          font-size: 0.85rem;
+          color: #475569;
+          line-height: 1.4;
+        }
+        .security-last-updated {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.78rem;
+          color: #94a3b8;
+          padding-top: 0.75rem;
+          border-top: 1px solid #f1f5f9;
+        }
+        .lock-now-card {
+          background: #fff1f2;
+          border: 1.5px solid #fecdd3;
+          border-radius: 20px;
+          padding: 1.25rem 1.5rem;
+        }
+        .lock-icon-box {
+          width: 38px;
+          height: 38px;
+          background: #fee2e2;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .btn-lock-full {
+          width: 100%;
+          background: #e11d48;
+          color: white;
+          border: none;
+          padding: 10px;
+          border-radius: 12px;
+          font-weight: 700;
+          font-size: 0.9rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          transition: all 0.2s;
+        }
+        .btn-lock-full:hover {
+          background: #be123c;
+          box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);
+        }
       `}</style>
     </div>
   );

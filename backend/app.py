@@ -7,6 +7,7 @@ import os
 import atexit
 import json
 import uuid
+import hashlib
 from datetime import datetime
 
 app = Flask(__name__)
@@ -194,8 +195,16 @@ INITIAL_STORE = {
             "clicks": 219,
             "createdAt": "2026-09-01T12:00:00Z"
         }
-    ]
+    ],
+    "owner_security": {
+        "password_hash": hashlib.sha256("admin123".encode('utf-8')).hexdigest(),
+        "is_custom": False,
+        "last_updated": None
+    }
 }
+
+def hash_pin(pin: str) -> str:
+    return hashlib.sha256(str(pin).strip().encode('utf-8')).hexdigest()
 
 # In-memory store fallback for fast serverless & state preservation
 memory_store = json.loads(json.dumps(INITIAL_STORE))
@@ -601,6 +610,112 @@ def manage_ad(ad_id):
                 save_store(store)
                 return jsonify({"message": "Ad updated successfully", "ad": a})
         return jsonify({"error": "Ad not found"}), 404
+
+# ==========================================
+# OWNER & ADMIN SECURITY / AUTHENTICATION
+# ==========================================
+@app.route('/api/admin/status', methods=['GET'])
+@app.route('/admin/status', methods=['GET'])
+def get_admin_security_status():
+    """Check if the owner has configured a custom master password."""
+    store = load_store()
+    security = store.setdefault("owner_security", {
+        "password_hash": hash_pin("admin123"),
+        "is_custom": False,
+        "last_updated": None
+    })
+    return jsonify({
+        "is_custom": security.get("is_custom", False),
+        "last_updated": security.get("last_updated")
+    })
+
+@app.route('/api/admin/auth', methods=['POST'])
+@app.route('/admin/auth', methods=['POST'])
+def authenticate_admin():
+    """Verify owner password for Admin Portal access."""
+    store = load_store()
+    security = store.setdefault("owner_security", {
+        "password_hash": hash_pin("admin123"),
+        "is_custom": False,
+        "last_updated": None
+    })
+    
+    stored_hash = security.get("password_hash")
+    is_custom = security.get("is_custom", False)
+
+    data = request.get_json() or {}
+    password = data.get("password", "").strip()
+
+    if not password:
+        return jsonify({"authenticated": False, "error": "Password is required"}), 400
+
+    entered_hash = hash_pin(password)
+
+    if is_custom:
+        if entered_hash == stored_hash:
+            return jsonify({
+                "authenticated": True,
+                "is_custom": True,
+                "message": "Owner authenticated successfully"
+            })
+        return jsonify({
+            "authenticated": False,
+            "error": "Incorrect Owner Master Password. Access denied."
+        }), 401
+    else:
+        # Default fallback before owner sets custom password
+        if entered_hash == stored_hash or password in ['admin123', 'owner', 'niladri']:
+            return jsonify({
+                "authenticated": True,
+                "is_custom": False,
+                "message": "Default owner access verified. Please set your custom master password."
+            })
+        return jsonify({
+            "authenticated": False,
+            "error": "Incorrect Owner Master Password. Access denied."
+        }), 401
+
+@app.route('/api/admin/change-password', methods=['POST'])
+@app.route('/admin/change-password', methods=['POST'])
+def change_admin_password():
+    """Set or update the owner master password."""
+    store = load_store()
+    security = store.setdefault("owner_security", {
+        "password_hash": hash_pin("admin123"),
+        "is_custom": False,
+        "last_updated": None
+    })
+    
+    data = request.get_json() or {}
+    current_password = data.get("current_password", "").strip()
+    new_password = data.get("new_password", "").strip()
+
+    if not new_password:
+        return jsonify({"error": "New password cannot be empty"}), 400
+
+    if len(new_password) < 4:
+        return jsonify({"error": "Password should be at least 4 characters long"}), 400
+
+    # If already custom, verify current password
+    if security.get("is_custom", False):
+        if not current_password or hash_pin(current_password) != security.get("password_hash"):
+            return jsonify({"error": "Current master password does not match"}), 401
+    else:
+        # If not custom yet, verify current password if provided
+        if current_password:
+            if hash_pin(current_password) != security.get("password_hash") and current_password not in ['admin123', 'owner', 'niladri']:
+                return jsonify({"error": "Current master password is incorrect"}), 401
+
+    security["password_hash"] = hash_pin(new_password)
+    security["is_custom"] = True
+    security["last_updated"] = datetime.now().isoformat()
+    save_store(store)
+
+    return jsonify({
+        "message": "Owner master password updated successfully! Only this password will unlock Admin Portal.",
+        "is_custom": True,
+        "last_updated": security["last_updated"]
+    })
 
 # ==========================================
 # DATA SEEDING & SERVER START

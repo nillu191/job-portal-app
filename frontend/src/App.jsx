@@ -10,12 +10,13 @@ import {
   Video, Clock, MessageSquare, ArrowRight, ShieldCheck,
   Check, HeartHandshake, Zap, Users, X, FileText, UploadCloud,
   Cpu, FileCheck, CheckCircle2, Target, AlertCircle, FileUp,
-  Shield, Lock, ArrowLeft, Send
+  Shield, Lock, ArrowLeft, Send, Eye, EyeOff, KeyRound, Key, ShieldAlert, LogOut
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PromotionalAds } from './components/PromotionalAds';
 import { AdminPortal } from './components/AdminPortal';
 import { CareerArticlesHub } from './components/CareerArticlesHub';
+import { Tech3DHomepage } from './components/Tech3DHomepage';
 
 const COLORS = ['#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ec4899'];
 
@@ -182,11 +183,36 @@ const App = () => {
   const [ads, setAds] = useState([]);
   const [allAds, setAllAds] = useState([]);
 
-  // Admin View & Authentication
+  // 3D Homepage View & User Session State
+  const [currentView, setCurrentView] = useState('home'); // 'home' (3D Homepage) or 'hub' (Main Portal)
+  const [currentUser, setCurrentUser] = useState(() => {
+    try {
+      const stored = localStorage.getItem('recruiters_hub_user');
+      return stored ? JSON.parse(stored) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  const handleUserLogout = () => {
+    localStorage.removeItem('recruiters_hub_user');
+    setCurrentUser(null);
+    setCurrentView('home');
+  };
+
+  // Admin View & Master Password Authentication
   const [isAdminView, setIsAdminView] = useState(false);
   const [showAdminPinModal, setShowAdminPinModal] = useState(false);
   const [adminPin, setAdminPin] = useState('');
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+  const [adminAuthError, setAdminAuthError] = useState('');
+  const [isAuthenticatingAdmin, setIsAuthenticatingAdmin] = useState(false);
+  const [showAdminPasswordInput, setShowAdminPasswordInput] = useState(false);
+  const [isFirstTimeSetup, setIsFirstTimeSetup] = useState(false);
+  const [setupNewPin, setSetupNewPin] = useState('');
+  const [setupConfirmPin, setSetupConfirmPin] = useState('');
+  const [showSetupPins, setShowSetupPins] = useState(false);
+  const [authModalMode, setAuthModalMode] = useState('login'); // 'login' or 'setup'
 
   // Mentor & Consultation Modals State
   const [showMentorModal, setShowMentorModal] = useState(false);
@@ -566,15 +592,136 @@ const App = () => {
     setShowBookingModal(true);
   };
 
-  const handleAdminAuthSubmit = (e) => {
+  const openAdminModal = async () => {
+    setAdminAuthError('');
+    setAdminPin('');
+    setSetupNewPin('');
+    setSetupConfirmPin('');
+    setShowAdminPasswordInput(false);
+    setShowSetupPins(false);
+    setShowAdminPinModal(true);
+
+    try {
+      const res = await fetch('/api/admin/status');
+      if (res.ok) {
+        const data = await res.json();
+        setIsFirstTimeSetup(!data.is_custom);
+        setAuthModalMode(data.is_custom ? 'login' : 'setup');
+      } else {
+        const stored = localStorage.getItem('owner_admin_pin');
+        setIsFirstTimeSetup(!stored);
+        setAuthModalMode(stored ? 'login' : 'setup');
+      }
+    } catch {
+      const stored = localStorage.getItem('owner_admin_pin');
+      setIsFirstTimeSetup(!stored);
+      setAuthModalMode(stored ? 'login' : 'setup');
+    }
+  };
+
+  const handleAdminAuthSubmit = async (e) => {
     e.preventDefault();
-    if (adminPin.trim() === 'admin123' || adminPin.trim() === 'owner' || adminPin.trim() === 'niladri') {
+    setAdminAuthError('');
+    const enteredPin = adminPin.trim();
+
+    if (!enteredPin) {
+      setAdminAuthError('Please enter the owner master password.');
+      return;
+    }
+
+    setIsAuthenticatingAdmin(true);
+
+    try {
+      const res = await fetch('/api/admin/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: enteredPin })
+      });
+      const data = await res.json();
+
+      if (res.ok && data.authenticated) {
+        setIsAdminAuthenticated(true);
+        setShowAdminPinModal(false);
+        setIsAdminView(true);
+        setAdminPin('');
+        fetchMentorsAndAds();
+      } else {
+        setAdminAuthError(data.error || 'Incorrect Owner Password. Access denied.');
+      }
+    } catch {
+      // Local storage fallback for standalone / offline
+      const storedPin = localStorage.getItem('owner_admin_pin');
+      let isAuthorized = false;
+      if (storedPin) {
+        isAuthorized = enteredPin === storedPin;
+      } else {
+        isAuthorized = enteredPin === 'admin123' || enteredPin === 'owner' || enteredPin === 'niladri';
+      }
+
+      if (isAuthorized) {
+        setIsAdminAuthenticated(true);
+        setShowAdminPinModal(false);
+        setIsAdminView(true);
+        setAdminPin('');
+        fetchMentorsAndAds();
+      } else {
+        setAdminAuthError('Incorrect Owner Password. Access denied.');
+      }
+    } finally {
+      setIsAuthenticatingAdmin(false);
+    }
+  };
+
+  const handleFirstTimeSetupSubmit = async (e) => {
+    e.preventDefault();
+    setAdminAuthError('');
+
+    if (!setupNewPin || setupNewPin.trim().length < 4) {
+      setAdminAuthError('Password must be at least 4 characters long.');
+      return;
+    }
+
+    if (setupNewPin !== setupConfirmPin) {
+      setAdminAuthError('Passwords do not match. Please re-enter.');
+      return;
+    }
+
+    setIsAuthenticatingAdmin(true);
+
+    try {
+      const res = await fetch('/api/admin/change-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          current_password: 'admin123',
+          new_password: setupNewPin.trim()
+        })
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem('owner_admin_pin', setupNewPin.trim());
+        setIsAdminAuthenticated(true);
+        setShowAdminPinModal(false);
+        setIsAdminView(true);
+        setIsFirstTimeSetup(false);
+        setSetupNewPin('');
+        setSetupConfirmPin('');
+        fetchMentorsAndAds();
+      } else {
+        setAdminAuthError(data.error || 'Failed to save owner password.');
+      }
+    } catch {
+      localStorage.setItem('owner_admin_pin', setupNewPin.trim());
       setIsAdminAuthenticated(true);
       setShowAdminPinModal(false);
       setIsAdminView(true);
+      setIsFirstTimeSetup(false);
+      setSetupNewPin('');
+      setSetupConfirmPin('');
       fetchMentorsAndAds();
-    } else {
-      alert('Incorrect Admin PIN. Default is "admin123".');
+    } finally {
+      setIsAuthenticatingAdmin(false);
     }
   };
 
@@ -745,6 +892,18 @@ const App = () => {
 
   const unreadCount = consultations.filter(c => c.status === 'Pending').length + allMentors.filter(m => !m.approved).length;
 
+  if (currentView === 'home') {
+    return (
+      <Tech3DHomepage 
+        onEnterApp={(user) => {
+          setCurrentUser(user);
+          setCurrentView('hub');
+        }}
+        initialUser={currentUser}
+      />
+    );
+  }
+
   return (
     <div className="dashboard-container">
       {/* Top Header */}
@@ -772,6 +931,35 @@ const App = () => {
         </div>
 
         <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
+          {/* Switch to 3D Experience Button */}
+          <button 
+            className="btn btn-outline"
+            onClick={() => setCurrentView('home')}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#0f172a', color: '#38bdf8', borderColor: '#38bdf8', fontWeight: '700' }}
+            title="Return to 3D Cyber Homepage"
+          >
+            <Sparkles size={16} color="#38bdf8" />
+            <span>3D Cyber Home</span>
+          </button>
+
+          {/* User Profile Info Badge */}
+          {currentUser && (
+            <div className="user-profile-nav-chip">
+              <img src={currentUser.avatar} alt={currentUser.name} className="user-nav-avatar" />
+              <div className="user-nav-meta">
+                <span className="user-nav-name">{currentUser.name}</span>
+                <span className="user-nav-role">{currentUser.targetRole || 'Candidate'}</span>
+              </div>
+              <button 
+                className="user-nav-logout"
+                onClick={handleUserLogout}
+                title="Sign Out"
+              >
+                <LogOut size={14} />
+              </button>
+            </div>
+          )}
+
           {/* Admin Mode Switcher Button */}
           {isAdminView ? (
             <button 
@@ -791,7 +979,7 @@ const App = () => {
                 if (isAdminAuthenticated) {
                   setIsAdminView(true);
                 } else {
-                  setShowAdminPinModal(true);
+                  openAdminModal();
                 }
               }}
             >
@@ -836,6 +1024,14 @@ const App = () => {
           onToggleAdActive={handleToggleAdActive}
           onDeleteAd={handleDeleteAd}
           onRefresh={fetchMentorsAndAds}
+          onLockAdmin={() => {
+            setIsAdminAuthenticated(false);
+            setIsAdminView(false);
+            setAdminPin('');
+          }}
+          onPasswordChanged={(newPin) => {
+            setAdminPin('');
+          }}
           loading={loading}
         />
       ) : (
@@ -1530,7 +1726,7 @@ const App = () => {
           MODALS
          ========================================================================= */}
 
-      {/* 1. Owner Admin Access PIN Modal */}
+      {/* 1. Owner Admin Access PIN / Password Modal */}
       <AnimatePresence>
         {showAdminPinModal && (
           <motion.div 
@@ -1548,49 +1744,169 @@ const App = () => {
               onClick={e => e.stopPropagation()}
             >
               <div className="modal-header">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div className="auth-lock-icon">
                     <Shield size={22} color="#5b3ce8" />
                   </div>
                   <div>
-                    <h3 style={{ margin: 0, fontSize: '1.25rem' }}>Owner & Admin Control Access</h3>
-                    <p style={{ margin: '2px 0 0 0', fontSize: '0.8rem', color: '#64748b' }}>Enter Owner PIN to manage mentors, approvals & ads</p>
+                    <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#0f172a' }}>
+                      {authModalMode === 'setup' ? '👑 Set Owner Master Password' : '👑 Owner & Admin Control Access'}
+                    </h3>
+                    <p style={{ margin: '2px 0 0 0', fontSize: '0.8rem', color: '#64748b' }}>
+                      {authModalMode === 'setup' 
+                        ? 'Create your private password so nobody else can open this section' 
+                        : 'Enter your owner password to manage mentors, approvals & ads'}
+                    </p>
                   </div>
                 </div>
                 <button className="close-btn" onClick={() => setShowAdminPinModal(false)}>×</button>
               </div>
 
-              <form onSubmit={handleAdminAuthSubmit} style={{ marginTop: '1rem' }}>
-                <div className="input-group">
-                  <label>Owner Security PIN *</label>
-                  <input 
-                    type="password" 
-                    placeholder="Enter PIN (Default: admin123)"
-                    value={adminPin}
-                    onChange={(e) => setAdminPin(e.target.value)}
-                    className="modal-input"
-                    autoFocus
-                  />
-                </div>
+              {adminAuthError && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -4 }} 
+                  animate={{ opacity: 1, y: 0 }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    background: '#fef2f2',
+                    border: '1px solid #fecaca',
+                    color: '#991b1b',
+                    padding: '0.75rem 1rem',
+                    borderRadius: '12px',
+                    fontSize: '0.85rem',
+                    fontWeight: '600',
+                    marginTop: '1rem'
+                  }}
+                >
+                  <AlertCircle size={16} />
+                  <span>{adminAuthError}</span>
+                </motion.div>
+              )}
 
-                <div style={{ display: 'flex', gap: '8px', marginTop: '1.25rem' }}>
-                  <button type="submit" className="btn btn-primary" style={{ flex: 1, padding: '0.85rem' }}>
-                    <Lock size={16} /> Unlock Owner Dashboard
-                  </button>
+              {authModalMode === 'setup' ? (
+                <form onSubmit={handleFirstTimeSetupSubmit} style={{ marginTop: '1rem' }}>
+                  <div className="form-group" style={{ marginBottom: '1rem' }}>
+                    <label style={{ display: 'block', fontWeight: '700', fontSize: '0.82rem', marginBottom: '4px', color: '#334155' }}>
+                      Create Master Password *
+                    </label>
+                    <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                      <input 
+                        type={showSetupPins ? 'text' : 'password'} 
+                        required
+                        placeholder="Minimum 4 characters (e.g. OwnerSecure#2026)"
+                        value={setupNewPin}
+                        onChange={(e) => setSetupNewPin(e.target.value)}
+                        className="modal-input"
+                        style={{ width: '100%', paddingRight: '42px' }}
+                        autoFocus
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowSetupPins(!showSetupPins)}
+                        style={{ position: 'absolute', right: '12px', background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer', display: 'flex' }}
+                        tabIndex={-1}
+                      >
+                        {showSetupPins ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="form-group" style={{ marginBottom: '1.25rem' }}>
+                    <label style={{ display: 'block', fontWeight: '700', fontSize: '0.82rem', marginBottom: '4px', color: '#334155' }}>
+                      Confirm Master Password *
+                    </label>
+                    <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                      <input 
+                        type={showSetupPins ? 'text' : 'password'} 
+                        required
+                        placeholder="Re-type your password"
+                        value={setupConfirmPin}
+                        onChange={(e) => setSetupConfirmPin(e.target.value)}
+                        className="modal-input"
+                        style={{ width: '100%', paddingRight: '42px' }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowSetupPins(!showSetupPins)}
+                        style={{ position: 'absolute', right: '12px', background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer', display: 'flex' }}
+                        tabIndex={-1}
+                      >
+                        {showSetupPins ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </button>
+                    </div>
+                  </div>
+
                   <button 
-                    type="button" 
-                    className="btn btn-outline"
-                    onClick={() => {
-                      setAdminPin('admin123');
-                      setIsAdminAuthenticated(true);
-                      setShowAdminPinModal(false);
-                      setIsAdminView(true);
-                    }}
+                    type="submit" 
+                    className="btn btn-primary" 
+                    style={{ width: '100%', padding: '0.85rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+                    disabled={isAuthenticatingAdmin}
                   >
-                    Quick Unlock (Test)
+                    {isAuthenticatingAdmin ? <RefreshCw className="spin" size={16} /> : <ShieldCheck size={18} />}
+                    <span>Save Password & Unlock Admin Portal</span>
                   </button>
-                </div>
-              </form>
+
+                  <div style={{ textAlign: 'center', marginTop: '0.85rem' }}>
+                    <button
+                      type="button"
+                      onClick={() => { setAuthModalMode('login'); setAdminAuthError(''); }}
+                      style={{ background: 'none', border: 'none', color: '#5b3ce8', fontSize: '0.82rem', fontWeight: '600', cursor: 'pointer' }}
+                    >
+                      Already know your password? Enter password instead →
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <form onSubmit={handleAdminAuthSubmit} style={{ marginTop: '1rem' }}>
+                  <div className="form-group" style={{ marginBottom: '1.25rem' }}>
+                    <label style={{ display: 'block', fontWeight: '700', fontSize: '0.82rem', marginBottom: '4px', color: '#334155' }}>
+                      Owner Master Password *
+                    </label>
+                    <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                      <input 
+                        type={showAdminPasswordInput ? 'text' : 'password'} 
+                        required
+                        placeholder="Enter your secret password"
+                        value={adminPin}
+                        onChange={(e) => setAdminPin(e.target.value)}
+                        className="modal-input"
+                        style={{ width: '100%', paddingRight: '42px' }}
+                        autoFocus
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowAdminPasswordInput(!showAdminPasswordInput)}
+                        style={{ position: 'absolute', right: '12px', background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer', display: 'flex' }}
+                        tabIndex={-1}
+                      >
+                        {showAdminPasswordInput ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </button>
+                    </div>
+                  </div>
+
+                  <button 
+                    type="submit" 
+                    className="btn btn-primary" 
+                    style={{ width: '100%', padding: '0.85rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+                    disabled={isAuthenticatingAdmin}
+                  >
+                    {isAuthenticatingAdmin ? <RefreshCw className="spin" size={16} /> : <Lock size={16} />}
+                    <span>Unlock Owner Dashboard</span>
+                  </button>
+
+                  <div style={{ textAlign: 'center', marginTop: '0.85rem' }}>
+                    <button
+                      type="button"
+                      onClick={() => { setAuthModalMode('setup'); setAdminAuthError(''); }}
+                      style={{ background: 'none', border: 'none', color: '#5b3ce8', fontSize: '0.82rem', fontWeight: '600', cursor: 'pointer' }}
+                    >
+                      👑 Want to choose/create a new custom password? Click here →
+                    </button>
+                  </div>
+                </form>
+              )}
             </motion.div>
           </motion.div>
         )}
@@ -2469,6 +2785,55 @@ const App = () => {
         .avatar-preview-circle { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2.5px solid #5b3ce8; flex-shrink: 0; box-shadow: 0 4px 10px rgba(91, 60, 232, 0.2); }
         .btn-upload-photo { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #5b3ce8; color: white; padding: 0.55rem 1rem; border-radius: 10px; font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
         .btn-upload-photo:hover { background: #4a2ec9; }
+
+        /* User Profile Nav Chip */
+        .user-profile-nav-chip {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background: #f1f5f9;
+          border: 1.5px solid #cbd5e1;
+          padding: 4px 10px 4px 4px;
+          border-radius: 999px;
+        }
+        .user-nav-avatar {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 1.5px solid #5b3ce8;
+        }
+        .user-nav-meta {
+          display: flex;
+          flex-direction: column;
+          line-height: 1.15;
+          text-align: left;
+        }
+        .user-nav-name {
+          font-size: 0.82rem;
+          font-weight: 800;
+          color: #0f172a;
+        }
+        .user-nav-role {
+          font-size: 0.68rem;
+          color: #64748b;
+          font-weight: 600;
+        }
+        .user-nav-logout {
+          background: none;
+          border: none;
+          color: #94a3b8;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          padding: 4px;
+          border-radius: 50%;
+          transition: all 0.2s;
+        }
+        .user-nav-logout:hover {
+          color: #dc2626;
+          background: #fee2e2;
+        }
 
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }

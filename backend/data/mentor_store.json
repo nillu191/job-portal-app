@@ -202,5 +202,10 @@
       "clicks": 219,
       "createdAt": "2026-09-01T12:00:00Z"
     }
-  ]
+  ],
+  "owner_security": {
+    "password_hash": "d0f22c594a3db14581355fa4860841e7682fc628053cd5338a54f4672ec5224c",
+    "is_custom": true,
+    "last_updated": "2026-09-07T21:58:05.296415"
+  }
 }
